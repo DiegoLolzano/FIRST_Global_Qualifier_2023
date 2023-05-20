@@ -82,5 +82,4 @@ public class PathAlgorithm {
     public TankDrive getTankDrive(){
         return tankDrive;
     }
-    //Batman en tanga
 }
