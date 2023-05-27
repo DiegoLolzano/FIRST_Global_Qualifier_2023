@@ -177,7 +177,7 @@ public class SampleTankDrive extends TankDrive {
     }
 
     public void followTrajectorySequenceAsync(TrajectorySequence trajectorySequence) {
-        trajectorySequenceRunner.followTrajectorySequenceAsync(trajectorySequence);
+        trajectorySequenceRunner.followTrajectorySequenceAsync(null);
     }
 
     public void followTrajectorySequence(TrajectorySequence trajectorySequence) {
