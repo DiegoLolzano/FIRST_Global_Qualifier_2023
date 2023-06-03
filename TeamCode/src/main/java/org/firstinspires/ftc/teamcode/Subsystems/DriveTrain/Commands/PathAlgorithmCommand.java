@@ -6,7 +6,7 @@ import com.arcrobotics.ftclib.util.Timing.Timer;
 import org.firstinspires.ftc.teamcode.CerbLib.GamepadState;
 import org.firstinspires.ftc.teamcode.CerbLib.PathAlgorithm;
 import org.firstinspires.ftc.teamcode.CerbLib.PathAlgorithm.DriveSides;
-import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.DriveTrain;
+import org.firstinspires.ftc.teamcode.CerbLib.TankDrive;
 
 import java.util.concurrent.TimeUnit;
 
@@ -25,7 +25,7 @@ public class PathAlgorithmCommand extends CommandBase {
         OFF
     }
 
-    public PathAlgorithmCommand(DriveTrain m_drive, PathAlgorithm pathAlgorithm,
+    public PathAlgorithmCommand(TankDrive m_drive, PathAlgorithm pathAlgorithm,
                                 AlgorithmModes algorithmModes, double unit){
         this.pathAlgorithm = pathAlgorithm;
         this.algorithmModes = algorithmModes;
@@ -36,7 +36,7 @@ public class PathAlgorithmCommand extends CommandBase {
 
         addRequirements(m_drive);
     }
-    public  PathAlgorithmCommand(DriveTrain m_drive, PathAlgorithm pathAlgorithm,
+    public  PathAlgorithmCommand(TankDrive m_drive, PathAlgorithm pathAlgorithm,
                                  AlgorithmModes algorithmMode, double unit, DriveSides driveSides){
         this(m_drive, pathAlgorithm, algorithmMode, unit);
         this.driveSides = driveSides;
