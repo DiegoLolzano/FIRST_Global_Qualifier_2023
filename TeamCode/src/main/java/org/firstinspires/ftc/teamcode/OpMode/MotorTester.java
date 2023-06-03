@@ -35,11 +35,27 @@ public class MotorTester extends CommandOpMode {
                 .whileHeld(() -> motorTester.setMotor3Power(1))
                 .whenReleased(() -> motorTester.setMotor3Power(0));
 
+        new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.DPAD_DOWN)
+                .whileHeld(() -> motorTester.setMotor0Power(-1))
+                .whenReleased(() -> motorTester.setMotor0Power(0));
+
+        new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.DPAD_LEFT)
+                .whileHeld(() -> motorTester.setMotor1Power(-1))
+                .whenReleased(() -> motorTester.setMotor1Power(0));
+
+        new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.DPAD_UP)
+                .whileHeld(() -> motorTester.setMotor2Power(-1))
+                .whenReleased(() -> motorTester.setMotor2Power(0));
+
+        new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.DPAD_RIGHT)
+                .whileHeld(() -> motorTester.setMotor3Power(-1))
+                .whenReleased(() -> motorTester.setMotor3Power(0));
+
         schedule(new RunCommand(() -> {
-            telemetry.addData("Motor0 Velo", motorTester.getMotor0VeloTicks());
-            telemetry.addData("Motor1 Velo", motorTester.getMotor1VeloTicks());
-            telemetry.addData("Motor2 Velo", motorTester.getMotor2VeloTicks());
-            telemetry.addData("Motor3 Velo", motorTester.getMotor3VeloTicks());
+            telemetry.addData("Motor0 Velo", motorTester.getMotor0VeloRPM());
+            telemetry.addData("Motor1 Velo", motorTester.getMotor1VeloRPM());
+            telemetry.addData("Motor2 Velo", motorTester.getMotor2VeloRPM());
+            telemetry.addData("Motor3 Velo", motorTester.getMotor3VeloRPM());
             telemetry.update();
         }));
     }

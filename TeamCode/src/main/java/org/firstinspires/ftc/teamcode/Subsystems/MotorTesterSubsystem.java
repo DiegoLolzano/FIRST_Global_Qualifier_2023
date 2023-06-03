@@ -6,6 +6,9 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.teamcode.CerbLib.Units;
+
 public class MotorTesterSubsystem extends SubsystemBase {
     DcMotorEx motor0;
     DcMotorEx motor1;
@@ -35,6 +38,7 @@ public class MotorTesterSubsystem extends SubsystemBase {
 
     public void setMotor0Power(double power){
         motor0.setPower(power);
+        motor0.getVelocity(AngleUnit.RADIANS);
     }
 
     public void setMotor1Power(double power){
@@ -49,19 +53,19 @@ public class MotorTesterSubsystem extends SubsystemBase {
         motor3.setPower(power);
     }
 
-    public double getMotor0VeloTicks(){
-        return motor0.getVelocity();
+    public double getMotor0VeloRPM(){
+        return Units.radiansPerSecondToRotationsPerMinute(motor0.getVelocity(AngleUnit.RADIANS));
     }
 
-    public double getMotor1VeloTicks(){
-        return motor1.getVelocity();
+    public double getMotor1VeloRPM(){
+        return Units.radiansPerSecondToRotationsPerMinute(motor1.getVelocity(AngleUnit.RADIANS));
     }
 
-    public double getMotor2VeloTicks(){
-        return motor2.getVelocity();
+    public double getMotor2VeloRPM(){
+        return Units.radiansPerSecondToRotationsPerMinute(motor2.getVelocity(AngleUnit.RADIANS));
     }
 
-    public double getMotor3VeloTicks(){
-        return motor3.getVelocity();
+    public double getMotor3VeloRPM(){
+        return Units.radiansPerSecondToRotationsPerMinute(motor3.getVelocity(AngleUnit.RADIANS));
     }
 }
