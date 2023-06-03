@@ -7,7 +7,7 @@ import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Subsystems.MotorTesterSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.Testing.MotorTesterSubsystem;
 
 @TeleOp(group = "Tester OpModes")
 public class MotorTester extends CommandOpMode {
