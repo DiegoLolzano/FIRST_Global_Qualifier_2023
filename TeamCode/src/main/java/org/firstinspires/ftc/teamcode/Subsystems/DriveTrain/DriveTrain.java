@@ -21,8 +21,8 @@ public class DriveTrain extends TankDrive {
         leftDrive = hardwareMap.get(DcMotorEx.class, "leftDrive");
         rightDrive = hardwareMap.get(DcMotorEx.class, "rightDrive");
 
-        leftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
-        rightDrive.setDirection(DcMotorSimple.Direction.FORWARD);
+        leftDrive.setDirection(DcMotorSimple.Direction.FORWARD);
+        rightDrive.setDirection(DcMotorSimple.Direction.REVERSE);
 
         stopMotors();
 
@@ -113,16 +113,15 @@ public class DriveTrain extends TankDrive {
         if (Math.abs(velocity.dtheta) < kEpsilon) {
             return new DriveSignal(velocity.dx, velocity.dx);
         }
-        double delta_v = DriveConstants.TRACK_WIDTH * velocity.dtheta /
-                (2 * DriveConstants.TRACK_SCRUB_FACTOR);
+        double delta_v = DriveConstants.TRACK_WIDTH * velocity.dtheta / (2 * DriveConstants.TRACK_SCRUB_FACTOR);
         return new DriveSignal(velocity.dx - delta_v, velocity.dx + delta_v);
     }
 
     public void setCheesyishDrive(Gamepad gamepad) {
         setCheesyishDrive(
                 -gamepad.left_stick_y,
-                -gamepad.right_stick_x,
-                gamepad.right_stick_button);
+                gamepad.right_stick_x,
+                true);
     }
 
     public void setCheesyishDrive(double throttle, double wheel, boolean quickTurn){
@@ -151,3 +150,4 @@ public class DriveTrain extends TankDrive {
         setOpenLoop(new DriveSignal(signal.getLeft() / scaling_factor, signal.getRight() / scaling_factor));
     }
 }
+

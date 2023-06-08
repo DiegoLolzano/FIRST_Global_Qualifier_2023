@@ -21,17 +21,14 @@ public class DriveCommand extends CommandBase {
 
     @Override
     public void execute(){
-        if(gamepad.right_trigger > 0.2)m_drive.setCheesyishDrive(0, -0.6, true);
-        if(gamepad.left_trigger > 0.2)m_drive.setCheesyishDrive(0, 0.6, true);
-
-        m_drive.setCheesyishDrive(
-                gamepad.left_bumper? gamepad.left_stick_y * 0.1: gamepad.left_stick_y,
-                gamepad.left_bumper? -gamepad.right_stick_x * 0.1: -gamepad.right_stick_x,
-                true);
+        m_drive.setCheesyishDrive(gamepad);
     }
 
     @Override
-    public void end(boolean interrupted){}
+    public void end(boolean interrupted){
+        m_drive.setLeftPower(0);
+        m_drive.setRightPower(0);
+    }
 
     @Override
     public boolean isFinished(){
