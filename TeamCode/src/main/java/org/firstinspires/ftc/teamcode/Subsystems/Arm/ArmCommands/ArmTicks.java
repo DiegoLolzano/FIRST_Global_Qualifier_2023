@@ -13,9 +13,10 @@ public class ArmTicks extends CommandBase {
     protected Timer timer;
 
     public enum ArmModes{
-        FLOOR,
-        TRANSIT,
-        SCORE
+        RETRACTED,
+        VERTICAL,
+        EXTENDED,
+        SKYSTONE
     }
 
     public ArmTicks(ArmSubsystem armSubsystem, ArmModes modes){
@@ -33,22 +34,28 @@ public class ArmTicks extends CommandBase {
     @Override
     public void execute(){
         switch (modes){
-            case FLOOR:
-                desiredPos = 1895;
+            case RETRACTED:
+                desiredPos = 0; //Adjust these values
                 armSubsystem.setArmTicks(desiredPos);
                 armSubsystem.setPower(0.5);
             break;
 
-            case TRANSIT:
-                desiredPos = 181;
+            case EXTENDED:
+                desiredPos = 669; //Adjust these values
                 armSubsystem.setArmTicks(desiredPos);
                 armSubsystem.setPower(0.5);
             break;
 
-            case SCORE:
-                desiredPos = 740;
+            case VERTICAL:
+                desiredPos = 309; //Adjust these values
                 armSubsystem.setArmTicks(desiredPos);
                 armSubsystem.setPower(0.5);
+
+            case SKYSTONE:
+                desiredPos = 500;
+                armSubsystem.setArmTicks(desiredPos);
+                armSubsystem.setPower(0.5);
+            break;
         }
     }
 

@@ -119,7 +119,7 @@ public class DriveTrain extends TankDrive {
 
     public void setCheesyishDrive(Gamepad gamepad) {
         setCheesyishDrive(
-                -gamepad.left_stick_y,
+                gamepad.left_stick_y,
                 gamepad.right_stick_x,
                 true);
     }

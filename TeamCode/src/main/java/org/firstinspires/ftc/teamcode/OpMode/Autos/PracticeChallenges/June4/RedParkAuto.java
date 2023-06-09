@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.OpMode.Autos.PracticeChallenges;
+package org.firstinspires.ftc.teamcode.OpMode.Autos.PracticeChallenges.June4;
 
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.SequentialCommandGroup;
@@ -9,9 +9,9 @@ import static org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.Path
 import static org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.PathAlgorithmCommand.AlgorithmModes.SIDE_TURN;
 import static org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.PathAlgorithmCommand.AlgorithmModes.OFF;
 
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmTicks.ArmModes.SCORE;
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmTicks.ArmModes.TRANSIT;
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmTicks.ArmModes.FLOOR;
+import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmTicks.ArmModes.RETRACTED;
+import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmTicks.ArmModes.VERTICAL;
+import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmTicks.ArmModes.EXTENDED;
 
 import org.firstinspires.ftc.teamcode.CerbLib.PathAlgorithm;
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmTicks;
@@ -31,12 +31,12 @@ public class RedParkAuto extends CommandOpMode {
         m_arm = new ArmSubsystem(hardwareMap);
         pathAlgorithm = new PathAlgorithm(m_drive);
 
-        register(m_drive);
+        register(m_drive, m_arm);
 
         schedule(new SequentialCommandGroup(
                 new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, -60),
                 new PathAlgorithmCommand(m_drive, pathAlgorithm, CENTRAL_TURN, 90),
-                new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, -60),
-                new ArmTicks(m_arm, FLOOR)));
+                new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, -60)));
+                //new ArmTicks(m_arm, FLOOR)));
     }
 }

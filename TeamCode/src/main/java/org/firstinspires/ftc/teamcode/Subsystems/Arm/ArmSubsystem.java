@@ -10,6 +10,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.CurrentUnit;
 
 public class ArmSubsystem extends SubsystemBase {
     DcMotorEx armMotor;
+
     public ArmSubsystem(HardwareMap hardwareMap){
         armMotor = hardwareMap.get(DcMotorEx.class, "armMotor");
 

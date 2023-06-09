@@ -1,14 +1,11 @@
 package org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands;
 
 import com.arcrobotics.ftclib.command.CommandBase;
-import com.arcrobotics.ftclib.util.Timing;
+import com.arcrobotics.ftclib.util.Timing.Timer;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem;
 
-import com.arcrobotics.ftclib.util.Timing.Timer;
-
-import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 
 public class DefaultClaw extends CommandBase {
@@ -20,6 +17,7 @@ public class DefaultClaw extends CommandBase {
     public enum ClawModes{
         OPEN,
         CLOSED
+
     }
 
     public DefaultClaw(ClawSubsystem clawSubsystem, ClawModes modes){
@@ -40,8 +38,8 @@ public class DefaultClaw extends CommandBase {
     public void execute(){
         switch (modes){
             case OPEN:
-                clawSubsystem.setLeftClawPos(0.5);
-                clawSubsystem.setRightClawPos(0.5);
+                clawSubsystem.setLeftClawPos(1.0);
+                clawSubsystem.setRightClawPos(1.0);
             break;
 
             case CLOSED:

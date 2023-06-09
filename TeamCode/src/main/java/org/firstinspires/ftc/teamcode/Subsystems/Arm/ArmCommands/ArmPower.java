@@ -32,18 +32,22 @@ public class ArmPower extends CommandBase {
             armSubsystem.changeToUsingEncoder();
             armSubsystem.setPower(0.6);
         } else if(gamepad.dpad_up){
-            desiredPos = 1895;
+            desiredPos = 309;
             armSubsystem.setArmTicks(desiredPos);
             armSubsystem.setPower(0.5);
         } else if(gamepad.dpad_down){
-            desiredPos = 181;
+            desiredPos = 500;
             armSubsystem.setArmTicks(desiredPos);
             armSubsystem.setPower(0.5);
         } else if(gamepad.dpad_right){
-            desiredPos = 900;
+            desiredPos = 0;
             armSubsystem.setArmTicks(desiredPos);
             armSubsystem.setPower(0.5);
-        } else {
+        } else if(gamepad.dpad_left) {
+            desiredPos = 669;
+            armSubsystem.setArmTicks(desiredPos);
+            armSubsystem.setPower(0.5);
+        }else {
             armSubsystem.setPower(0.0);
         }
     }
