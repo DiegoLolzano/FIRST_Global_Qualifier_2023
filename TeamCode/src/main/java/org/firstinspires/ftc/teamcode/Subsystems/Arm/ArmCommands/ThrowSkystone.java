@@ -2,18 +2,18 @@ package org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands;
 
 import com.arcrobotics.ftclib.command.CommandBase;
 
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotoredArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem;
 
 import java.util.Timer;
 
 public class ThrowSkystone extends CommandBase {
-    private ArmSubsystem armSubsystem;
+    private MotoredArmSubsystem armSubsystem;
     private ClawSubsystem clawSubsystem;
     private int desiredPos = 0;
     protected Timer timer;
 
-    public ThrowSkystone(ArmSubsystem armSubsystem, ClawSubsystem clawSubsystem){
+    public ThrowSkystone(MotoredArmSubsystem armSubsystem, ClawSubsystem clawSubsystem){
         this.armSubsystem = armSubsystem;
         this.clawSubsystem = clawSubsystem;
 
@@ -33,7 +33,7 @@ public class ThrowSkystone extends CommandBase {
 
         if(armSubsystem.getArmTicks() == desiredPos){
             clawSubsystem.setLeftClawPos(1.0);
-            clawSubsystem.setRightClawPos(1.0);
+            //clawSubsystem.setRightClawPos(1.0);
         }
     }
 

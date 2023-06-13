@@ -3,19 +3,18 @@ package org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands;
 import com.arcrobotics.ftclib.command.CommandBase;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-import org.firstinspires.ftc.teamcode.CerbLib.GamepadState;
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotoredArmSubsystem;
 
 public class ArmPower extends CommandBase {
-    ArmSubsystem armSubsystem;
+    MotoredArmSubsystem armSubsystem;
     int desiredPos;
     Gamepad gamepad;
 
-    public ArmPower(ArmSubsystem armSubsystem, Gamepad gamepad){
-        this.armSubsystem = armSubsystem;
+    public ArmPower(MotoredArmSubsystem motoredArmSubsystem, Gamepad gamepad){
+        this.armSubsystem = motoredArmSubsystem;
         this.gamepad = gamepad;
 
-        addRequirements(armSubsystem);
+        addRequirements(motoredArmSubsystem);
     }
 
     @Override

@@ -97,6 +97,12 @@ public class DriveTrain extends TankDrive {
         return rightDrive.isBusy();
     }
 
+    public void invertMotors(DcMotorSimple.Direction leftdirection,
+                             DcMotorSimple.Direction rightDirection){
+        leftDrive.setDirection(leftdirection);
+        rightDrive.setDirection(rightDirection);
+    }
+
     /********** Cheesy Drive **********/
     public void setOpenLoop(DriveSignal signal) {
         leftDrive.setPower(signal.getLeft());
@@ -119,8 +125,8 @@ public class DriveTrain extends TankDrive {
 
     public void setCheesyishDrive(Gamepad gamepad) {
         setCheesyishDrive(
-                gamepad.left_stick_y,
-                gamepad.right_stick_x,
+                -gamepad.left_stick_y,
+                -gamepad.right_stick_x,
                 true);
     }
 

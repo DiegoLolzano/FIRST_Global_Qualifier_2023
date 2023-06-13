@@ -19,7 +19,7 @@ import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmPower;
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotoredArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Basket.BasketSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Basket.Commands.DefaultBasket;
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem;
@@ -33,7 +33,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.Intake.IntakeSubsystem;
 @TeleOp
 public class TeleDrive extends CommandOpMode {
     DriveTrain m_drive;
-    ArmSubsystem m_arm;
+    MotoredArmSubsystem m_arm;
     ClawSubsystem m_claw;
     BasketSubsystem m_basket;
     IntakeSubsystem m_intake;
@@ -41,7 +41,7 @@ public class TeleDrive extends CommandOpMode {
     @Override
     public void initialize() {
         m_drive = new DriveTrain(hardwareMap);
-        m_arm = new ArmSubsystem(hardwareMap);
+        m_arm = new MotoredArmSubsystem(hardwareMap);
         m_claw = new ClawSubsystem(hardwareMap);
         m_basket = new BasketSubsystem(hardwareMap);
         m_intake = new IntakeSubsystem(hardwareMap);

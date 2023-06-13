@@ -5,28 +5,29 @@ import com.arcrobotics.ftclib.util.Timing.Timer;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem2;
 
 import java.util.concurrent.TimeUnit;
 
-public class DefaultClaw extends CommandBase {
-    ClawSubsystem clawSubsystem;
-    private ClawModes modes;
+public class DefaultClaw2 extends CommandBase {
+    ClawSubsystem2 clawSubsystem2;
+    private ClawModes2 modes2;
     private Gamepad gamepad;
     protected Timer timer;
 
-    public enum ClawModes{
-        OPEN,
-        CLOSED
+    public enum ClawModes2{
+        OPEN2,
+        CLOSED2
 
     }
 
-    public DefaultClaw(ClawSubsystem clawSubsystem, ClawModes modes){
-        this.clawSubsystem = clawSubsystem;
-        this.modes = modes;
+    public DefaultClaw2(ClawSubsystem2 clawSubsystem2, ClawModes2 modes2){
+        this.clawSubsystem2 = clawSubsystem2;
+        this.modes2 = modes2;
 
         timer = new Timer(700, TimeUnit.MILLISECONDS);
 
-        addRequirements(clawSubsystem);
+        addRequirements(clawSubsystem2);
     }
 
     @Override
@@ -36,15 +37,15 @@ public class DefaultClaw extends CommandBase {
 
     @Override
     public void execute(){
-        switch (modes){
-            case OPEN:
-                clawSubsystem.setLeftClawPos(1.0);
-                //clawSubsystem.setRightClawPos(1.0);
+        switch (modes2){
+            case OPEN2:
+                clawSubsystem2.setLeftClaw2Pos(0);
+                clawSubsystem2.setRightClaw2Pos(0);
             break;
 
-            case CLOSED:
-                clawSubsystem.setLeftClawPos(0.3);
-                //clawSubsystem.setRightClawPos(0);
+            case CLOSED2:
+                clawSubsystem2.setLeftClaw2Pos(1.0);
+                clawSubsystem2.setRightClaw2Pos(1.0);
             break;
         }
     }

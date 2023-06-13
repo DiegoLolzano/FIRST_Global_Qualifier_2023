@@ -2,24 +2,22 @@ package org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands;
 
 import com.arcrobotics.ftclib.command.CommandBase;
 
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotoredArmSubsystem;
 
 import java.util.Timer;
 
 public class ArmTicks extends CommandBase {
-    private ArmSubsystem armSubsystem;
+    private MotoredArmSubsystem armSubsystem;
     private ArmModes modes;
     private int desiredPos = 0;
     protected Timer timer;
 
     public enum ArmModes{
         RETRACTED,
-        VERTICAL,
-        EXTENDED,
-        SKYSTONE
+        EXTENDED
     }
 
-    public ArmTicks(ArmSubsystem armSubsystem, ArmModes modes){
+    public ArmTicks(MotoredArmSubsystem armSubsystem, ArmModes modes){
         this.armSubsystem = armSubsystem;
         this.modes = modes;
 
@@ -41,18 +39,7 @@ public class ArmTicks extends CommandBase {
             break;
 
             case EXTENDED:
-                desiredPos = 669; //Adjust these values
-                armSubsystem.setArmTicks(desiredPos);
-                armSubsystem.setPower(0.5);
-            break;
-
-            case VERTICAL:
-                desiredPos = 309; //Adjust these values
-                armSubsystem.setArmTicks(desiredPos);
-                armSubsystem.setPower(0.5);
-
-            case SKYSTONE:
-                desiredPos = 500;
+                desiredPos = -768; //Adjust these values
                 armSubsystem.setArmTicks(desiredPos);
                 armSubsystem.setPower(0.5);
             break;
