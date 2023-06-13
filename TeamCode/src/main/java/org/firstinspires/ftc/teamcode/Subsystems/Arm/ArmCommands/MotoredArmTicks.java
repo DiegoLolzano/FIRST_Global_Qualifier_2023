@@ -6,7 +6,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotoredArmSubsystem;
 
 import java.util.Timer;
 
-public class ArmTicks extends CommandBase {
+public class MotoredArmTicks extends CommandBase {
     private MotoredArmSubsystem armSubsystem;
     private ArmModes modes;
     private int desiredPos = 0;
@@ -17,7 +17,7 @@ public class ArmTicks extends CommandBase {
         EXTENDED
     }
 
-    public ArmTicks(MotoredArmSubsystem armSubsystem, ArmModes modes){
+    public MotoredArmTicks(MotoredArmSubsystem armSubsystem, ArmModes modes){
         this.armSubsystem = armSubsystem;
         this.modes = modes;
 

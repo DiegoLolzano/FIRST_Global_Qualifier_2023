@@ -4,9 +4,7 @@ import com.arcrobotics.ftclib.command.CommandBase;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.ServoedArmSubsystem;
 
-import java.util.Timer;
-
-public class ArmServo extends CommandBase {
+public class ServoedArm extends CommandBase {
     private ServoedArmSubsystem servoedArm;
     private ServoArmState state;
 
@@ -15,7 +13,7 @@ public class ArmServo extends CommandBase {
         DOWN
     }
 
-    public ArmServo(ServoedArmSubsystem servoedArm, ServoArmState state){
+    public ServoedArm(ServoedArmSubsystem servoedArm, ServoArmState state){
         this.servoedArm = servoedArm;
         this.state = state;
 

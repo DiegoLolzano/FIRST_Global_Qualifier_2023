@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.OpMode.TeleOp;
+package org.firstinspires.ftc.teamcode.OpMode.TeleOp.PracticeChallenges;
 
 import static org.firstinspires.ftc.teamcode.Subsystems.Basket.Commands.DefaultBasket.BasketModes.TRANSIT;
 import static org.firstinspires.ftc.teamcode.Subsystems.Basket.Commands.DefaultBasket.BasketModes.INDEX;
@@ -18,7 +18,7 @@ import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmPower;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotoredArmPower;
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotoredArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Basket.BasketSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Basket.Commands.DefaultBasket;
@@ -50,7 +50,7 @@ public class TeleDrive extends CommandOpMode {
 
         m_drive.setDefaultCommand(new DriveCommand(m_drive, gamepad1));
 
-        m_arm.setDefaultCommand(new ArmPower(m_arm, gamepad2));
+        m_arm.setDefaultCommand(new MotoredArmPower(m_arm, gamepad2));
 
         new GamepadButton(new GamepadEx(gamepad1),
                 GamepadKeys.Button.A).whileHeld(new DefaultIntake(m_intake, IN))

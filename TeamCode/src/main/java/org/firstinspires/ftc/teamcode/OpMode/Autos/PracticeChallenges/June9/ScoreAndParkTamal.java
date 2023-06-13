@@ -1,42 +1,29 @@
-package org.firstinspires.ftc.teamcode.OpMode.Autos.PracticeChallenges.June6;
+package org.firstinspires.ftc.teamcode.OpMode.Autos.PracticeChallenges.June9;
 
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.InstantCommand;
-import com.arcrobotics.ftclib.command.ParallelCommandGroup;
 import com.arcrobotics.ftclib.command.SequentialCommandGroup;
 import com.arcrobotics.ftclib.command.WaitCommand;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import  static org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.PathAlgorithmCommand.AlgorithmModes.OFF;
 import  static org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.PathAlgorithmCommand.AlgorithmModes.STRAIGHT;
-import  static org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.PathAlgorithmCommand.AlgorithmModes.SIDE_TURN;
 import  static org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.PathAlgorithmCommand.AlgorithmModes.CENTRAL_TURN;
 
-import  static org.firstinspires.ftc.teamcode.CerbLib.PathAlgorithm.DriveSides.RIGHT;
-import  static org.firstinspires.ftc.teamcode.CerbLib.PathAlgorithm.DriveSides.LEFT;
-
-import static org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultClaw2.ClawModes2.CLOSED2;
-import static org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultClaw2.ClawModes2.OPEN2;
-
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmServo.ServoArmState.DOWN;
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmServo.ServoArmState.UP;
-
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmTicks.ArmModes.RETRACTED;
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmTicks.ArmModes.EXTENDED;
+import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotoredArmTicks.ArmModes.RETRACTED;
+import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotoredArmTicks.ArmModes.EXTENDED;
 
 
 import org.firstinspires.ftc.teamcode.CerbLib.PathAlgorithm;
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmServo;
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmTicks;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotoredArmTicks;
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotoredArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.ServoedArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem2;
-import org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultClaw2;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.PathAlgorithmCommand;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.DriveTrain;
 
 @Autonomous
-public class NewRobotAuto extends CommandOpMode {
+public class ScoreAndParkTamal extends CommandOpMode {
     DriveTrain m_drive;
     ServoedArmSubsystem servoedArm;
     ClawSubsystem2 servoedClaw;
@@ -69,9 +56,9 @@ public class NewRobotAuto extends CommandOpMode {
                 new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, -10),
                 new PathAlgorithmCommand(m_drive, pathAlgorithm, CENTRAL_TURN, 100),
                 new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, 100),
-                new ArmTicks(motoredArm, EXTENDED),
+                new MotoredArmTicks(motoredArm, EXTENDED),
                 new WaitCommand(8),
-                new ArmTicks(motoredArm, RETRACTED)
+                new MotoredArmTicks(motoredArm, RETRACTED)
         ));
 
     }

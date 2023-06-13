@@ -1,11 +1,10 @@
-package org.firstinspires.ftc.teamcode.OpMode.TeleOp;
+package org.firstinspires.ftc.teamcode.OpMode.TeleOp.PracticeChallenges.June9;
 
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.RunCommand;
 import com.arcrobotics.ftclib.command.button.GamepadButton;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.gamepad.GamepadKeys;
-import com.arcrobotics.ftclib.hardware.motors.Motor;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import static org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultClaw.ClawModes.OPEN;
@@ -14,15 +13,14 @@ import static org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultCla
 import static org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultClaw2.ClawModes2.OPEN2;
 import static org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultClaw2.ClawModes2.CLOSED2;
 
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmServo.ServoArmState.UP;
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmServo.ServoArmState.DOWN;
+import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ServoedArm.ServoArmState.UP;
+import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ServoedArm.ServoArmState.DOWN;
 
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmTicks.ArmModes.EXTENDED;
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmTicks.ArmModes.RETRACTED;
+import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotoredArmTicks.ArmModes.EXTENDED;
+import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotoredArmTicks.ArmModes.RETRACTED;
 
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmPower;
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmServo;
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmTicks;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ServoedArm;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotoredArmTicks;
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotoredArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.ServoedArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem;
@@ -55,10 +53,10 @@ public class TamalTeleOp extends CommandOpMode {
         //motoredArm.setDefaultCommand(new ArmPower(motoredArm, gamepad2));
 
         new GamepadButton(new GamepadEx(gamepad2),
-                GamepadKeys.Button.A).whenPressed(new ArmTicks(motoredArm, EXTENDED));
+                GamepadKeys.Button.A).whenPressed(new MotoredArmTicks(motoredArm, EXTENDED));
 
         new GamepadButton(new GamepadEx(gamepad2),
-                GamepadKeys.Button.Y).whenPressed(new ArmTicks(motoredArm, RETRACTED));
+                GamepadKeys.Button.Y).whenPressed(new MotoredArmTicks(motoredArm, RETRACTED));
 
         new GamepadButton(new GamepadEx(gamepad1),
                 GamepadKeys.Button.LEFT_BUMPER).whenPressed(new DefaultClaw2(servoedArmClaw, OPEN2));
@@ -67,10 +65,10 @@ public class TamalTeleOp extends CommandOpMode {
                 GamepadKeys.Button.RIGHT_BUMPER).whenPressed(new DefaultClaw2(servoedArmClaw, CLOSED2));
 
         new GamepadButton(new GamepadEx(gamepad1),
-                GamepadKeys.Button.A).whenPressed(new ArmServo(servoedArm, DOWN));
+                GamepadKeys.Button.A).whenPressed(new ServoedArm(servoedArm, DOWN));
 
         new GamepadButton(new GamepadEx(gamepad1),
-                GamepadKeys.Button.Y).whenPressed(new ArmServo(servoedArm, UP));
+                GamepadKeys.Button.Y).whenPressed(new ServoedArm(servoedArm, UP));
 
         new GamepadButton(new GamepadEx(gamepad2),
                 GamepadKeys.Button.LEFT_BUMPER).whenPressed(new DefaultClaw(motoredArmClaw, OPEN));

@@ -5,12 +5,12 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotoredArmSubsystem;
 
-public class ArmPower extends CommandBase {
+public class MotoredArmPower extends CommandBase {
     MotoredArmSubsystem armSubsystem;
     int desiredPos;
     Gamepad gamepad;
 
-    public ArmPower(MotoredArmSubsystem motoredArmSubsystem, Gamepad gamepad){
+    public MotoredArmPower(MotoredArmSubsystem motoredArmSubsystem, Gamepad gamepad){
         this.armSubsystem = motoredArmSubsystem;
         this.gamepad = gamepad;
 

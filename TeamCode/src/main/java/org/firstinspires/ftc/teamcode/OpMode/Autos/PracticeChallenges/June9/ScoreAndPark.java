@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.OpMode.Autos.PracticeChallenges.June6;
+package org.firstinspires.ftc.teamcode.OpMode.Autos.PracticeChallenges.June9;
 
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.SequentialCommandGroup;
@@ -9,12 +9,12 @@ import static org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.Path
 
 import static org.firstinspires.ftc.teamcode.CerbLib.PathAlgorithm.DriveSides.LEFT;
 
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmTicks.ArmModes.EXTENDED;
+import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotoredArmTicks.ArmModes.EXTENDED;
 
 import static  org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultClaw.ClawModes.CLOSED;
 
 import org.firstinspires.ftc.teamcode.CerbLib.PathAlgorithm;
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ArmTicks;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotoredArmTicks;
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotoredArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultClaw;
@@ -43,7 +43,7 @@ public class ScoreAndPark extends CommandOpMode {
                 new DefaultClaw(m_claw, DefaultClaw.ClawModes.OPEN),
                 new PathAlgorithmCommand(m_drive, pathAlgorithm, SIDE_TURN, 90, LEFT),
                 new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, -60),
-                new ArmTicks(m_arm, EXTENDED)
+                new MotoredArmTicks(m_arm, EXTENDED)
         ));
 
     }
