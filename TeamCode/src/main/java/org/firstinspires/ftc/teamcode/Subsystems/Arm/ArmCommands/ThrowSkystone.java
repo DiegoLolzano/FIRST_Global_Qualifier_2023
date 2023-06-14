@@ -2,18 +2,18 @@ package org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands;
 
 import com.arcrobotics.ftclib.command.CommandBase;
 
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotoredArmSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotorizedArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem;
 
 import java.util.Timer;
 
 public class ThrowSkystone extends CommandBase {
-    private MotoredArmSubsystem armSubsystem;
+    private MotorizedArmSubsystem armSubsystem;
     private ClawSubsystem clawSubsystem;
     private int desiredPos = 0;
     protected Timer timer;
 
-    public ThrowSkystone(MotoredArmSubsystem armSubsystem, ClawSubsystem clawSubsystem){
+    public ThrowSkystone(MotorizedArmSubsystem armSubsystem, ClawSubsystem clawSubsystem){
         this.armSubsystem = armSubsystem;
         this.clawSubsystem = clawSubsystem;
 

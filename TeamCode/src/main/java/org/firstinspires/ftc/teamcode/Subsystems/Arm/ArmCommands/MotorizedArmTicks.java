@@ -2,12 +2,12 @@ package org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands;
 
 import com.arcrobotics.ftclib.command.CommandBase;
 
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotoredArmSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotorizedArmSubsystem;
 
 import java.util.Timer;
 
-public class MotoredArmTicks extends CommandBase {
-    private MotoredArmSubsystem armSubsystem;
+public class MotorizedArmTicks extends CommandBase {
+    private MotorizedArmSubsystem armSubsystem;
     private ArmModes modes;
     private int desiredPos = 0;
     protected Timer timer;
@@ -17,7 +17,7 @@ public class MotoredArmTicks extends CommandBase {
         EXTENDED
     }
 
-    public MotoredArmTicks(MotoredArmSubsystem armSubsystem, ArmModes modes){
+    public MotorizedArmTicks(MotorizedArmSubsystem armSubsystem, ArmModes modes){
         this.armSubsystem = armSubsystem;
         this.modes = modes;
 

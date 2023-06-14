@@ -8,10 +8,10 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.CurrentUnit;
 
-public class MotoredArmSubsystem extends SubsystemBase {
+public class MotorizedArmSubsystem extends SubsystemBase {
     DcMotorEx armMotor;
 
-    public MotoredArmSubsystem(HardwareMap hardwareMap){
+    public MotorizedArmSubsystem(HardwareMap hardwareMap){
         armMotor = hardwareMap.get(DcMotorEx.class, "armMotor");
 
         armMotor.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -21,8 +21,8 @@ public class MotoredArmSubsystem extends SubsystemBase {
         resetEncoder();
         armMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        armMotor.setPositionPIDFCoefficients(4.5);
-        armMotor.setTargetPositionTolerance(60);
+        armMotor.setPositionPIDFCoefficients(6);
+        armMotor.setTargetPositionTolerance(30);
     }
 
     public void setPower(double power){
@@ -56,5 +56,9 @@ public class MotoredArmSubsystem extends SubsystemBase {
 
     public void resetEncoder(){
         armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+    }
+
+    public boolean isArmAtPoint(){
+        return armMotor.getCurrentPosition() == armMotor.getTargetPosition();
     }
 }

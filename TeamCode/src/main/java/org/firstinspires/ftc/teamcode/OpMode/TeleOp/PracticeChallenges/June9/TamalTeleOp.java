@@ -16,12 +16,12 @@ import static org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultCla
 import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ServoedArm.ServoArmState.UP;
 import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ServoedArm.ServoArmState.DOWN;
 
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotoredArmTicks.ArmModes.EXTENDED;
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotoredArmTicks.ArmModes.RETRACTED;
+import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotorizedArmTicks.ArmModes.EXTENDED;
+import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotorizedArmTicks.ArmModes.RETRACTED;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ServoedArm;
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotoredArmTicks;
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotoredArmSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotorizedArmTicks;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotorizedArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.ServoedArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem2;
@@ -33,7 +33,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.DriveTrain;
 @TeleOp
 public class TamalTeleOp extends CommandOpMode {
     DriveTrain m_drive;
-    MotoredArmSubsystem motoredArm;
+    MotorizedArmSubsystem motoredArm;
     ServoedArmSubsystem servoedArm;
     ClawSubsystem motoredArmClaw;
     ClawSubsystem2 servoedArmClaw;
@@ -41,7 +41,7 @@ public class TamalTeleOp extends CommandOpMode {
     @Override
     public void initialize() {
         m_drive = new DriveTrain(hardwareMap);
-        motoredArm = new MotoredArmSubsystem(hardwareMap);
+        motoredArm = new MotorizedArmSubsystem(hardwareMap);
         servoedArm = new ServoedArmSubsystem(hardwareMap);
         motoredArmClaw = new ClawSubsystem(hardwareMap);
         servoedArmClaw = new ClawSubsystem2(hardwareMap);
@@ -53,10 +53,10 @@ public class TamalTeleOp extends CommandOpMode {
         //motoredArm.setDefaultCommand(new ArmPower(motoredArm, gamepad2));
 
         new GamepadButton(new GamepadEx(gamepad2),
-                GamepadKeys.Button.A).whenPressed(new MotoredArmTicks(motoredArm, EXTENDED));
+                GamepadKeys.Button.A).whenPressed(new MotorizedArmTicks(motoredArm, EXTENDED));
 
         new GamepadButton(new GamepadEx(gamepad2),
-                GamepadKeys.Button.Y).whenPressed(new MotoredArmTicks(motoredArm, RETRACTED));
+                GamepadKeys.Button.Y).whenPressed(new MotorizedArmTicks(motoredArm, RETRACTED));
 
         new GamepadButton(new GamepadEx(gamepad1),
                 GamepadKeys.Button.LEFT_BUMPER).whenPressed(new DefaultClaw2(servoedArmClaw, OPEN2));

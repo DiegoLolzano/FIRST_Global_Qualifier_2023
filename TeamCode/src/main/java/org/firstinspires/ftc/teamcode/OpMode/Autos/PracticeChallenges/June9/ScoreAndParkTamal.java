@@ -10,24 +10,24 @@ import  static org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.Pat
 import  static org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.PathAlgorithmCommand.AlgorithmModes.STRAIGHT;
 import  static org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.PathAlgorithmCommand.AlgorithmModes.CENTRAL_TURN;
 
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotoredArmTicks.ArmModes.RETRACTED;
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotoredArmTicks.ArmModes.EXTENDED;
+import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotorizedArmTicks.ArmModes.RETRACTED;
+import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotorizedArmTicks.ArmModes.EXTENDED;
 
 
 import org.firstinspires.ftc.teamcode.CerbLib.PathAlgorithm;
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotoredArmTicks;
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotoredArmSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotorizedArmTicks;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotorizedArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.ServoedArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem2;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.PathAlgorithmCommand;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.DriveTrain;
 
-@Autonomous
+@Autonomous (name="Pieza y Estacionada Tamal", group="Reto Junio 9")
 public class ScoreAndParkTamal extends CommandOpMode {
     DriveTrain m_drive;
     ServoedArmSubsystem servoedArm;
     ClawSubsystem2 servoedClaw;
-    MotoredArmSubsystem motoredArm;
+    MotorizedArmSubsystem motoredArm;
 
     PathAlgorithm pathAlgorithm;
 
@@ -36,7 +36,7 @@ public class ScoreAndParkTamal extends CommandOpMode {
         m_drive = new DriveTrain(hardwareMap);
         servoedArm = new ServoedArmSubsystem(hardwareMap);
         servoedClaw = new ClawSubsystem2(hardwareMap);
-        motoredArm = new MotoredArmSubsystem(hardwareMap);
+        motoredArm = new MotorizedArmSubsystem(hardwareMap);
 
         pathAlgorithm = new PathAlgorithm(m_drive);
 
@@ -56,9 +56,9 @@ public class ScoreAndParkTamal extends CommandOpMode {
                 new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, -10),
                 new PathAlgorithmCommand(m_drive, pathAlgorithm, CENTRAL_TURN, 100),
                 new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, 100),
-                new MotoredArmTicks(motoredArm, EXTENDED),
+                new MotorizedArmTicks(motoredArm, EXTENDED),
                 new WaitCommand(8),
-                new MotoredArmTicks(motoredArm, RETRACTED)
+                new MotorizedArmTicks(motoredArm, RETRACTED)
         ));
 
     }

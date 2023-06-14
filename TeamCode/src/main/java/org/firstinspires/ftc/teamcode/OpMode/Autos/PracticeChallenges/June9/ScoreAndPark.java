@@ -9,29 +9,29 @@ import static org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.Path
 
 import static org.firstinspires.ftc.teamcode.CerbLib.PathAlgorithm.DriveSides.LEFT;
 
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotoredArmTicks.ArmModes.EXTENDED;
+import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotorizedArmTicks.ArmModes.EXTENDED;
 
 import static  org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultClaw.ClawModes.CLOSED;
 
 import org.firstinspires.ftc.teamcode.CerbLib.PathAlgorithm;
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotoredArmTicks;
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotoredArmSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotorizedArmTicks;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotorizedArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultClaw;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.PathAlgorithmCommand;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.DriveTrain;
 
-@Autonomous
+@Autonomous (name="Pieza y Estacionada", group="Reto Junio 9")
 public class ScoreAndPark extends CommandOpMode {
     DriveTrain m_drive;
-    MotoredArmSubsystem m_arm;
+    MotorizedArmSubsystem m_arm;
     ClawSubsystem m_claw;
     PathAlgorithm pathAlgorithm;
 
     @Override
     public void initialize() {
         m_drive = new DriveTrain(hardwareMap);
-        m_arm = new MotoredArmSubsystem(hardwareMap);
+        m_arm = new MotorizedArmSubsystem(hardwareMap);
         m_claw = new ClawSubsystem(hardwareMap);
         pathAlgorithm = new PathAlgorithm(m_drive);
 
@@ -43,7 +43,7 @@ public class ScoreAndPark extends CommandOpMode {
                 new DefaultClaw(m_claw, DefaultClaw.ClawModes.OPEN),
                 new PathAlgorithmCommand(m_drive, pathAlgorithm, SIDE_TURN, 90, LEFT),
                 new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, -60),
-                new MotoredArmTicks(m_arm, EXTENDED)
+                new MotorizedArmTicks(m_arm, EXTENDED)
         ));
 
     }

@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Subsystems.DriveTrain;
 
+import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -18,10 +19,13 @@ import org.firstinspires.ftc.teamcode.RoadRunner.drive.DriveConstants;
 public class DriveTrain extends TankDrive {
     private DcMotorEx leftDrive;
     private DcMotorEx rightDrive;
+    //private BNO055IMU imu; Checar que onda con esto un dia libre
 
     public DriveTrain(HardwareMap hardwareMap){
         leftDrive = hardwareMap.get(DcMotorEx.class, "leftDrive");
         rightDrive = hardwareMap.get(DcMotorEx.class, "rightDrive");
+
+        //imu = hardwareMap.get(BNO055IMU.class, "imu");
 
         leftDrive.setDirection(DcMotorSimple.Direction.FORWARD);
         rightDrive.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -127,7 +131,7 @@ public class DriveTrain extends TankDrive {
 
     public void setCheesyishDrive(Gamepad gamepad) {
         setCheesyishDrive(
-                -gamepad.left_stick_y,
+                gamepad.left_stick_y,
                 -gamepad.right_stick_x,
                 true);
     }

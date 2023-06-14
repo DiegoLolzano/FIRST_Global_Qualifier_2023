@@ -24,7 +24,7 @@ public class DefaultClaw extends CommandBase {
         this.clawSubsystem = clawSubsystem;
         this.modes = modes;
 
-        timer = new Timer(700, TimeUnit.MILLISECONDS);
+        timer = new Timer(1500, TimeUnit.SECONDS);
 
         addRequirements(clawSubsystem);
     }
@@ -38,13 +38,13 @@ public class DefaultClaw extends CommandBase {
     public void execute(){
         switch (modes){
             case OPEN:
-                clawSubsystem.setLeftClawPos(1.0);
-                //clawSubsystem.setRightClawPos(1.0);
+                clawSubsystem.setLeftClawPos(0.35);
+                clawSubsystem.setRightClawPos(0.35);
             break;
 
             case CLOSED:
-                clawSubsystem.setLeftClawPos(0.3);
-                //clawSubsystem.setRightClawPos(0);
+                clawSubsystem.setLeftClawPos(0.1);
+                clawSubsystem.setRightClawPos(0.1);
             break;
         }
     }

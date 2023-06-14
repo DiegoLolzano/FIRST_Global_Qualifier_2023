@@ -8,20 +8,20 @@ import static org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.Path
 import static org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.PathAlgorithmCommand.AlgorithmModes.CENTRAL_TURN;
 
 import org.firstinspires.ftc.teamcode.CerbLib.PathAlgorithm;
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotoredArmSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotorizedArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.PathAlgorithmCommand;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.DriveTrain;
 
-@Autonomous
+@Autonomous (name="Estacionada Rojo", group="Reto Junio 4")
 public class RedParkAuto extends CommandOpMode {
     DriveTrain m_drive;
     PathAlgorithm pathAlgorithm;
-    MotoredArmSubsystem m_arm;
+    MotorizedArmSubsystem m_arm;
 
     @Override
     public void initialize() {
         m_drive = new DriveTrain(hardwareMap);
-        m_arm = new MotoredArmSubsystem(hardwareMap);
+        m_arm = new MotorizedArmSubsystem(hardwareMap);
         pathAlgorithm = new PathAlgorithm(m_drive);
 
         register(m_drive, m_arm);

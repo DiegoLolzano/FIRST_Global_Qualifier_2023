@@ -26,7 +26,7 @@ public class DriveCommand extends CommandBase {
     public void execute(){
         m_drive.setCheesyishDrive(gamepad);
 
-        if(gamepad.right_stick_button){
+        /*if(gamepad.right_stick_button){
             toggleFront();
         }
 
@@ -34,7 +34,7 @@ public class DriveCommand extends CommandBase {
             m_drive.invertMotors(DcMotorSimple.Direction.FORWARD, DcMotorSimple.Direction.REVERSE);
         } else {
             m_drive.invertMotors(DcMotorSimple.Direction.REVERSE, DcMotorSimple.Direction.FORWARD);
-        }
+        }*/
     }
 
     @Override
