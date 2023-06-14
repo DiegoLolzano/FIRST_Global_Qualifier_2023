@@ -31,6 +31,15 @@ public class June14Tele extends CommandOpMode {
     IntakeSubsystem m_intake;
     MotorizedArmSubsystem m_arm;
 
+    /*
+     * System Map
+     * leftDrive Motor Port:  1
+     * rightDrive Motor Port: 0
+     * armMotor Motor Port:   2
+     *
+     * intakeMotor Motor Port: 3;
+     */
+
     @Override
     public void initialize() {
         m_drive = new DriveTrain(hardwareMap); //16:1
