@@ -43,10 +43,18 @@ public class OnlyPiecesCycles extends CommandOpMode {
         register(m_drive, m_arm, m_intake);
 
         schedule(new SequentialCommandGroup(
-                //Cycle 1
+                new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, 50),
+                new HubArm(m_arm, UPPER),
+                new DefaultIntake(m_intake, OUT),
+                new WaitCommand(2000),
+                new ParallelCommandGroup(
+                        new DefaultIntake(m_intake, STOP),
+                        new HubArm(m_arm, RETRACTED)),
+                new PathAlgorithmCommand(m_drive, pathAlgorithm, CENTRAL_TURN, 180),
                 new ParallelCommandGroup(
                         new DefaultIntake(m_intake, IN),
-                        new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, 50)),
+                        new PathAlgorithmCommand(m_drive, pathAlgorithm, POWAAAAAH, 80)),
+                new WaitCommand(2000),
                 //Check turn
                 //direction
                 //Cycle 1
@@ -74,17 +82,23 @@ public class OnlyPiecesCycles extends CommandOpMode {
                 new WaitCommand(1000),
                 new ParallelCommandGroup(
                         new DefaultIntake(m_intake, STOP),
-                        new HubArm(m_arm, RETRACTED)),
-                //Finish Cycle and park on barrier
-                new PathAlgorithmCommand(m_drive, pathAlgorithm, CENTRAL_TURN, 90),
-                new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, 32)
+                        new HubArm(m_arm, RETRACTED))
+
         ));
 
         /*schedule(new SequentialCommandGroup(
-                //Cycle 1
+                new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, 50),
+                new HubArm(m_arm, UPPER),
+                new InstantCommand(() -> m_intake.setIntakePower(1.0)),
+                new WaitCommand(2000),
+                new ParallelCommandGroup(
+                        new InstantCommand(() -> m_intake.setIntakePower(0.0)),
+                        new HubArm(m_arm, RETRACTED)),
+                new PathAlgorithmCommand(m_drive, pathAlgorithm, CENTRAL_TURN, 180),
                 new ParallelCommandGroup(
                         new InstantCommand(() -> m_intake.setIntakePower(-1.0)),
-                        new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, 50)),
+                        new PathAlgorithmCommand(m_drive, pathAlgorithm, POWAAAAAH, 80)),
+                new WaitCommand(2000),
                 //Check turn
                 //direction
                 //Cycle 1

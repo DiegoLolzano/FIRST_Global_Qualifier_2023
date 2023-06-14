@@ -32,7 +32,7 @@ public class PIDTunerAndMeasurementCheck extends CommandOpMode {
         register(m_drive);
 
         schedule(new SequentialCommandGroup(
-                new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, 15),
+                new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, 30),
                 new WaitCommand(5000),
                 new PathAlgorithmCommand(m_drive, pathAlgorithm, CENTRAL_TURN, 90)
         ));
@@ -43,6 +43,13 @@ public class PIDTunerAndMeasurementCheck extends CommandOpMode {
 
             telemetry.addData("Inches Right",
                     DriveConstants.encoderTicksToInches(m_drive.getRightCurrentPos()));
+
+            telemetry.addData("Ticks Left",
+                    m_drive.getRightCurrentPos());
+
+            telemetry.addData("Ticks Right",
+                    m_drive.getRightCurrentPos());
+
 
             telemetry.update();
         }));

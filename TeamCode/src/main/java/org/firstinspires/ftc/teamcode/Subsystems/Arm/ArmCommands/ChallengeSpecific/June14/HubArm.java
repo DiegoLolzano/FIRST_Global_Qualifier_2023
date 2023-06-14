@@ -28,6 +28,12 @@ public class HubArm extends CommandBase {
     @Override
     public void execute(){
         switch (level){
+            case RETRACTED:
+                levelTicks = 0; //Check Values
+                m_arm.setArmTicks(levelTicks);
+                m_arm.setPower(0.5);
+            break;
+
             case LOWER:
                 levelTicks = 200;
                 m_arm.setArmTicks(levelTicks);
@@ -52,11 +58,7 @@ public class HubArm extends CommandBase {
                 m_arm.setPower(0.5);
             break;
 
-            case RETRACTED:
-                levelTicks = 0; //Check Values
-                m_arm.setArmTicks(levelTicks);
-                m_arm.setPower(0.5);
-            break;
+
         }
     }
 

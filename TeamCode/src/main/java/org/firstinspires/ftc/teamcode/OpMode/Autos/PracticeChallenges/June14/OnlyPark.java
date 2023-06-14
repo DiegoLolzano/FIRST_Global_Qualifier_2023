@@ -34,7 +34,6 @@ public class OnlyPark extends CommandOpMode {
 
         schedule(new SequentialCommandGroup(
                 //Finish Cycle and park on barrier
-                new PathAlgorithmCommand(m_drive, pathAlgorithm, CENTRAL_TURN, 90),
                 new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, 60)
         ));
     }

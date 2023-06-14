@@ -53,24 +53,18 @@ public class AllTasksAuto extends CommandOpMode {
         register(m_drive, m_arm, m_intake);
 
         schedule(new SequentialCommandGroup(
-                //World and align with cubes and balls
+                new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, 50),
+                new HubArm(m_arm, UPPER),
+                new DefaultIntake(m_intake, OUT),
+                new WaitCommand(2000),
+                new ParallelCommandGroup(
+                        new DefaultIntake(m_intake, STOP),
+                        new HubArm(m_arm, RETRACTED)),
+                new PathAlgorithmCommand(m_drive, pathAlgorithm, CENTRAL_TURN, 180),
                 new ParallelCommandGroup(
                         new DefaultIntake(m_intake, IN),
-                        new HubArm(m_arm, WORLD_SCORE),
-                        new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, 37.5)),
-                 new WaitCommand(1000),
-                 new DefaultIntake(m_intake, OUT),
-                 new WaitCommand(1000),
-                 new DefaultIntake(m_intake, STOP),
-                 new ParallelCommandGroup(
-                         new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, -37.5),
-                         new HubArm(m_arm, RETRACTED)),
-                 //Check
-                 // robot orientation
-                new PathAlgorithmCommand(m_drive, pathAlgorithm, CENTRAL_TURN, 45),
-                new ParallelCommandGroup(
-                        new DefaultIntake(m_intake, IN),
-                        new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, 50)),
+                        new PathAlgorithmCommand(m_drive, pathAlgorithm, POWAAAAAH, 80)),
+                new WaitCommand(2000),
                 //Check turn
                 //direction
                 //Cycle 1
@@ -80,7 +74,7 @@ public class AllTasksAuto extends CommandOpMode {
                 new PathAlgorithmCommand(m_drive, pathAlgorithm, CENTRAL_TURN, 180),
                 new HubArm(m_arm, UPPER),
                 new DefaultIntake(m_intake, OUT),
-                new WaitCommand(1000),
+                new WaitCommand(2000),
                 new ParallelCommandGroup(
                         new DefaultIntake(m_intake, STOP),
                         new HubArm(m_arm, RETRACTED)),
@@ -95,7 +89,7 @@ public class AllTasksAuto extends CommandOpMode {
                 new PathAlgorithmCommand(m_drive, pathAlgorithm, CENTRAL_TURN, 180),
                 new HubArm(m_arm, UPPER),
                 new DefaultIntake(m_intake, OUT),
-                new WaitCommand(1000),
+                new WaitCommand(2000),
                 new ParallelCommandGroup(
                         new DefaultIntake(m_intake, STOP),
                         new HubArm(m_arm, RETRACTED)),
@@ -107,23 +101,18 @@ public class AllTasksAuto extends CommandOpMode {
         /* BACK UP AUTO
 
         schedule(new SequentialCommandGroup(
-                //World and align with cubes and balls
-                new ParallelCommandGroup(new InstantCommand(() -> m_intake.setIntakePower(-1.0)),
-                        new HubArm(m_arm, WORLD_SCORE),
-                        new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, 37.5)),
-                new WaitCommand(1000),
+                 new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, 50),
+                new HubArm(m_arm, UPPER),
                 new InstantCommand(() -> m_intake.setIntakePower(1.0)),
-                new WaitCommand(1000),
-                new InstantCommand(() -> m_intake.setIntakePower(0.0)),
+                new WaitCommand(2000),
                 new ParallelCommandGroup(
-                        new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, -37.5),
+                        new InstantCommand(() -> m_intake.setIntakePower(0.0)),
                         new HubArm(m_arm, RETRACTED)),
-                //Check
-                // robot orientation
-                new PathAlgorithmCommand(m_drive, pathAlgorithm, CENTRAL_TURN, 45),
+                new PathAlgorithmCommand(m_drive, pathAlgorithm, CENTRAL_TURN, 180),
                 new ParallelCommandGroup(
                         new InstantCommand(() -> m_intake.setIntakePower(-1.0)),
-                        new PathAlgorithmCommand(m_drive, pathAlgorithm, STRAIGHT, 50)),
+                        new PathAlgorithmCommand(m_drive, pathAlgorithm, POWAAAAAH, 80)),
+                new WaitCommand(2000),
                 //Check turn
                 //direction
                 //Cycle 1

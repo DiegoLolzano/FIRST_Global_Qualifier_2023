@@ -26,7 +26,7 @@ public class DriveTrain extends TankDrive {
         leftDrive.setDirection(DcMotorSimple.Direction.FORWARD);
         rightDrive.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        stopMotors();
+        resetSensors();
 
         leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -127,7 +127,7 @@ public class DriveTrain extends TankDrive {
 
     public void setCheesyishDrive(Gamepad gamepad) {
         setCheesyishDrive(
-                gamepad.left_stick_y,
+                -gamepad.left_stick_y,
                 -gamepad.right_stick_x,
                 true);
     }
