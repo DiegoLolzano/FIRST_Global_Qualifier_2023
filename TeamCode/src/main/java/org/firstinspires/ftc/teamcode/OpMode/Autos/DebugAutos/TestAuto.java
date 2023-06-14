@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.OpMode.Autos;
+package org.firstinspires.ftc.teamcode.OpMode.Autos.DebugAutos;
 
 import static org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.PathAlgorithmCommand.AlgorithmModes.STRAIGHT;
 import static org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.PathAlgorithmCommand.AlgorithmModes.CENTRAL_TURN;
@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.CerbLib.PathAlgorithm;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.PathAlgorithmCommand;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.DriveTrain;
 
-@Autonomous
+@Autonomous (name="Autonomo de Prueba", group="Autos De Prueba")
 public class TestAuto extends CommandOpMode {
     DriveTrain m_drive;
     PathAlgorithm pathAlgorithm;

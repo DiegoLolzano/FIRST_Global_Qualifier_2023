@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ChallengeSpecific;
+package org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ChallengeSpecific.June13;
 
 import com.arcrobotics.ftclib.command.CommandBase;
 import com.qualcomm.robotcore.hardware.Gamepad;
@@ -16,6 +16,8 @@ public class ConeArm extends CommandBase {
     public ConeArm(MotorizedArmSubsystem m_arm, SelectorVirtualSubsystem m_selector){
         this.m_arm = m_arm;
         this.m_selector = m_selector;
+
+        addRequirements(m_arm);
     }
 
     @Override

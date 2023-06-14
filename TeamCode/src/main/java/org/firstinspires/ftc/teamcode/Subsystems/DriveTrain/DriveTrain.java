@@ -1,19 +1,15 @@
 package org.firstinspires.ftc.teamcode.Subsystems.DriveTrain;
 
-import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.IMU;
 
-import org.checkerframework.checker.units.qual.Angle;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.CerbLib.DriveSignal;
 import org.firstinspires.ftc.teamcode.CerbLib.TankDrive;
 import org.firstinspires.ftc.teamcode.CerbLib.Twist2d;
-import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.RoadRunner.drive.DriveConstants;
 
 public class DriveTrain extends TankDrive {
@@ -41,8 +37,8 @@ public class DriveTrain extends TankDrive {
         leftDrive.setPositionPIDFCoefficients(2);
         rightDrive.setPositionPIDFCoefficients(2);
 
-        leftDrive.setTargetPositionTolerance(40);
-        rightDrive.setTargetPositionTolerance(40);
+        leftDrive.setTargetPositionTolerance(20);
+        rightDrive.setTargetPositionTolerance(20);
     }
 
     @Override

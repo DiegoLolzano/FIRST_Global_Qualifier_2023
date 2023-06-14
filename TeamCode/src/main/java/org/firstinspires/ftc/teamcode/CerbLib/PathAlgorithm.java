@@ -31,6 +31,17 @@ public class PathAlgorithm {
         tankDrive.setLeftPower(0.8);
     }
 
+    public void powaaah(double distance_IN){
+        double ticks = DriveConstants.TICKS_PER_INCH * distance_IN;
+        COMPENSATED_POWER = setCompensatedPower(distance_IN);
+
+        tankDrive.setLeftMotorTargetPos(lastLeftPose + (int)ticks);
+        tankDrive.setRightMotorTargetPos(lastRightPose + (int)ticks );
+
+        tankDrive.setRightPower(1.0);
+        tankDrive.setLeftPower(1.0);
+    }
+
     public void centralTurn(double angle){
         double arcLength = DriveConstants.CENTRAL_ANGLE_TO_INCHES * angle;
         double ticks = arcLength * DriveConstants.TICKS_PER_INCH;

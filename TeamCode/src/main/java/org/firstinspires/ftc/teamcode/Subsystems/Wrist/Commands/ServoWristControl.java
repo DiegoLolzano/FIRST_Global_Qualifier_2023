@@ -12,6 +12,7 @@ public class ServoWristControl extends CommandBase {
     private ServoedWrist m_wrist;
     private Gamepad gamepad;
     private WristState state;
+    private double servoPos = 0.0;
 
     private Timer timer;
 
@@ -41,23 +42,28 @@ public class ServoWristControl extends CommandBase {
     public void execute(){
         switch (state){
             case PICK:
-                m_wrist.setWristServoPos(0.60);
+                servoPos = 0.60;
+                m_wrist.setWristServoPos(servoPos);
             break;
 
             case TRANSPORT:
-                m_wrist.setWristServoPos(0.20);
+                servoPos = 0.20;
+                m_wrist.setWristServoPos(servoPos);
             break;
 
             case LOWER_JUNCTION:
-                m_wrist.setWristServoPos(0.7);
+                servoPos = 0.7;
+                m_wrist.setWristServoPos(servoPos);
             break;
 
             case MIDDLE_JUNCTION:
-                m_wrist.setWristServoPos(0.55);
+                servoPos = 0.55;
+                m_wrist.setWristServoPos(servoPos);
             break;
 
             case UPPER_JUNCTION:
-                m_wrist.setWristServoPos(0.35);
+                servoPos = 0.35;
+                m_wrist.setWristServoPos(servoPos);
             break;
         }
     }
@@ -70,5 +76,9 @@ public class ServoWristControl extends CommandBase {
     @Override
     public boolean isFinished(){
         return timer.done() & gamepad == null;
+    }
+
+    public boolean isWristOnPos(){
+        return m_wrist.getServoPosition() == servoPos;
     }
 }

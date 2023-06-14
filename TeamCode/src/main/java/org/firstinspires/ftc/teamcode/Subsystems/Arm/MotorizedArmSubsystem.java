@@ -34,6 +34,12 @@ public class MotorizedArmSubsystem extends SubsystemBase {
         armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
+    public void moveArmToPos(int ticks){
+        armMotor.setTargetPosition(ticks);
+        armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        armMotor.setPower(0.5);
+    }
+
     public void resetArmTicks(){
         armMotor.setPower(0);
         armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

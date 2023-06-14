@@ -1,17 +1,19 @@
 package org.firstinspires.ftc.teamcode.Subsystems.Intake.Commands;
 
 import com.arcrobotics.ftclib.command.CommandBase;
+import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Intake.IntakeSubsystem;
 
 public class DefaultIntake extends CommandBase {
     private IntakeSubsystem m_intake;
+    private Gamepad gamepad;
     private IntakeMode intakeMode;
 
     public enum IntakeMode{
         IN,
         OUT,
-        OFF
+        STOP
     }
 
     public DefaultIntake(IntakeSubsystem m_intake, IntakeMode intakeMode){
@@ -27,7 +29,7 @@ public class DefaultIntake extends CommandBase {
     @Override
     public void execute(){
         switch (intakeMode){
-            case OFF:
+            case STOP:
                 m_intake.setIntakePower(0.0);
             break;
 
@@ -46,6 +48,6 @@ public class DefaultIntake extends CommandBase {
 
     @Override
     public boolean isFinished(){
-        return false;
+        return m_intake.isIntakeBusy() & gamepad == null;
     }
 }

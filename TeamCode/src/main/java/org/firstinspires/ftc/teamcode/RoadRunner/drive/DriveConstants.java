@@ -22,11 +22,13 @@ public class DriveConstants {
      * These are motor constants that should be listed online for your motors.
      */
     //Core Hex = 288
-    //HD Hex = 560
-    public static final double TICKS_PER_REV = 560;
+    //HD Hex 20:1 = 560
+    //HD Hex free or with planetary= 28
+    public static final double TICKS_PER_REV = 28;
     //Core Hex = 125
-    //HD Hex = 300
-    public static final double MAX_RPM = 300;
+    //HD Hex 20:1 = 300
+    //HD Hex free or with planetary = 6000
+    public static final double MAX_RPM = 6000;
 
     /*
      * Set RUN_USING_ENCODER to true to enable built-in hub velocity control using drive encoders.
@@ -49,8 +51,8 @@ public class DriveConstants {
      * convenience. Make sure to exclude any gear ratio included in MOTOR_CONFIG from GEAR_RATIO.
      */
     public static double WHEEL_RADIUS = 3.54331; // in
-    public static double GEAR_RATIO = 1; // output (wheel) speed / input (motor) speed
-    public static double TRACK_WIDTH = 15.5; // in
+    public static double GEAR_RATIO = 16; // output (wheel) speed / input (motor) speed
+    public static double TRACK_WIDTH = 16.5; // in
     public static double TRACK_SCRUB_FACTOR = 1.0;
     //-----------calculos-----------//
     public static double TICKS_PER_INCH = ( TICKS_PER_REV * GEAR_RATIO ) / (2 * Math.PI * WHEEL_RADIUS );

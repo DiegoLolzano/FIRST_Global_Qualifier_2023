@@ -19,4 +19,8 @@ public class IntakeSubsystem extends SubsystemBase {
     public void setIntakePower(double power){
         intakeMotor.setPower(power);
     }
+
+    public boolean isIntakeBusy(){
+        return intakeMotor.isBusy();
+    }
 }

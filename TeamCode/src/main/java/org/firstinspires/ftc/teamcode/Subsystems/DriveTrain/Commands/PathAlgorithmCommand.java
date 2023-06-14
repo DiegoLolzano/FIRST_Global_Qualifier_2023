@@ -22,6 +22,7 @@ public class PathAlgorithmCommand extends CommandBase {
         STRAIGHT,
         CENTRAL_TURN,
         SIDE_TURN,
+        POWAAAAAH,
         OFF
     }
 
@@ -52,6 +53,10 @@ public class PathAlgorithmCommand extends CommandBase {
         switch (algorithmModes){
             case STRAIGHT:
                 pathAlgorithm.straight(unit);
+            break;
+
+            case POWAAAAAH:
+                pathAlgorithm.powaaah(unit);
             break;
 
             case CENTRAL_TURN:
