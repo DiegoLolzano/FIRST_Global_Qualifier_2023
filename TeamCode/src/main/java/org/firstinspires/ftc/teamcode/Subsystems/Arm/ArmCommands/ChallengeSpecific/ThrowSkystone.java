@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands;
+package org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ChallengeSpecific;
 
 import com.arcrobotics.ftclib.command.CommandBase;
 
