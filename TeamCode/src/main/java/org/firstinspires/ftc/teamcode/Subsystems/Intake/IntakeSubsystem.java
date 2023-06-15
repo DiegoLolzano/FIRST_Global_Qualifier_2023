@@ -13,7 +13,7 @@ public class IntakeSubsystem extends SubsystemBase {
        intakeMotor = hardwareMap.get(DcMotorEx.class, "intakeMotor");
 
        intakeMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-       intakeMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+       intakeMotor.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     public void setIntakePower(double power){

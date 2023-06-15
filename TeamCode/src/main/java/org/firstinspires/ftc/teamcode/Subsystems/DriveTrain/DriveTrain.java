@@ -34,8 +34,8 @@ public class DriveTrain extends TankDrive {
         leftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        leftDrive.setPositionPIDFCoefficients(2);
-        rightDrive.setPositionPIDFCoefficients(2);
+        leftDrive.setPositionPIDFCoefficients(2.5);
+        rightDrive.setPositionPIDFCoefficients(2.5);
 
         leftDrive.setTargetPositionTolerance(20);
         rightDrive.setTargetPositionTolerance(20);

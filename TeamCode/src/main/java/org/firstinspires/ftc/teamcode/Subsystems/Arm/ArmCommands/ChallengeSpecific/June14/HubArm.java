@@ -13,7 +13,6 @@ public class HubArm extends CommandBase {
         LOWER,
         MIDDLE,
         UPPER,
-        WORLD_SCORE,
         RETRACTED
     }
 
@@ -29,35 +28,28 @@ public class HubArm extends CommandBase {
     public void execute(){
         switch (level){
             case RETRACTED:
-                levelTicks = 0; //Check Values
+                levelTicks = -200; //Check Values
                 m_arm.setArmTicks(levelTicks);
                 m_arm.setPower(0.5);
             break;
 
             case LOWER:
-                levelTicks = 200;
+                levelTicks = 200; //
                 m_arm.setArmTicks(levelTicks);
                 m_arm.setPower(0.5);
             break;
 
             case MIDDLE:
-                levelTicks = 410; //Check Values
+                levelTicks = -1593; //Check Values //
                 m_arm.setArmTicks(levelTicks);
                 m_arm.setPower(0.5);
             break;
 
             case UPPER:
-                levelTicks = 903; //Check Values
+                levelTicks = -2752; //Check Values //
                 m_arm.setArmTicks(levelTicks);
                 m_arm.setPower(0.5);
             break;
-
-            case WORLD_SCORE:
-                levelTicks = 1400; //Check Values
-                m_arm.setArmTicks(levelTicks);
-                m_arm.setPower(0.5);
-            break;
-
 
         }
     }

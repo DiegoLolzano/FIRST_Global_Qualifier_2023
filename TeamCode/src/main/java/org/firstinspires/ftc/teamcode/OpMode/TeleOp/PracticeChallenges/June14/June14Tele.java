@@ -65,9 +65,6 @@ public class June14Tele extends CommandOpMode {
                 GamepadKeys.Button.DPAD_RIGHT).whenPressed(new HubArm(m_arm, MIDDLE));
 
         new GamepadButton(new GamepadEx(gamepad2),
-                GamepadKeys.Button.DPAD_LEFT).whenPressed(new HubArm(m_arm, LOWER));
-
-        new GamepadButton(new GamepadEx(gamepad2),
                 GamepadKeys.Button.DPAD_DOWN).whenPressed(new HubArm(m_arm, RETRACTED));
 
         schedule(new RunCommand(() -> {
