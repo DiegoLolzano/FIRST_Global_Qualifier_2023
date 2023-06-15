@@ -1,5 +1,8 @@
 package org.firstinspires.ftc.teamcode.OpMode.TeleOp.PracticeChallenges.June13;
 
+import com.acmerobotics.dashboard.FtcDashboard;
+import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
+import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.InstantCommand;
 import com.arcrobotics.ftclib.command.RunCommand;
@@ -28,6 +31,10 @@ public class LaPitonTeleOp extends CommandOpMode {
     ServoedWrist m_wrist;
     SelectorVirtualSubsystem m_selector;
 
+    FtcDashboard dashboard;
+    TelemetryPacket packet;
+
+
     /*
     * System Map
     * leftDrive Motor Port:  1
@@ -46,6 +53,10 @@ public class LaPitonTeleOp extends CommandOpMode {
         m_claw = new ClawSubsystem(hardwareMap);
         m_wrist = new ServoedWrist(hardwareMap);
         m_selector = new SelectorVirtualSubsystem(gamepad1);
+
+        dashboard = FtcDashboard.getInstance();
+        packet = new TelemetryPacket();
+        telemetry = new MultipleTelemetry(telemetry, dashboard.getTelemetry());
 
         m_drive.setDefaultCommand(new DriveCommand(m_drive, gamepad1));
 
@@ -111,10 +122,15 @@ public class LaPitonTeleOp extends CommandOpMode {
                 GamepadKeys.Button.DPAD_RIGHT).whenPressed(new ServoWristControl(m_wrist, SCORE));*/
 
         schedule(new RunCommand(() -> {
-            telemetry.addData("Arm Ticks", m_arm.getArmTicks());
+           /* telemetry.addData("Arm Ticks", m_arm.getArmTicks());
             telemetry.addData("Servo Pos", m_wrist.getServoPosition());
             telemetry.addData("Current Selected Level", m_selector.getLevelToPickUp());
-            telemetry.update();
+            telemetry.update(); */
+
+            packet.put("Arm Ticks", m_arm.getArmTicks());
+            packet.put("Servo Angel", m_wrist.getServoPosition());
+
+            dashboard.sendTelemetryPacket(packet);
         }));
     }
 }
