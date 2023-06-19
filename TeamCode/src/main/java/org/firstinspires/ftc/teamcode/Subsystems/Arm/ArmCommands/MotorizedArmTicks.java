@@ -33,13 +33,13 @@ public class MotorizedArmTicks extends CommandBase {
     public void execute(){
         switch (modes){
             case RETRACTED:
-                desiredPos = 0; //Adjust these values
+                desiredPos = 121; //Adjust these values
                 armSubsystem.setArmTicks(desiredPos);
                 armSubsystem.setPower(0.5);
             break;
 
             case EXTENDED:
-                desiredPos = -768; //Adjust these values
+                desiredPos = 726; //Adjust these values
                 armSubsystem.setArmTicks(desiredPos);
                 armSubsystem.setPower(0.5);
             break;

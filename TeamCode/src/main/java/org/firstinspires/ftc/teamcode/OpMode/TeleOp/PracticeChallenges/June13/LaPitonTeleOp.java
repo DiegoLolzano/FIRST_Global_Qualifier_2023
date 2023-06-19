@@ -14,7 +14,11 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import static org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultClaw.ClawModes.OPEN;
 import static org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultClaw.ClawModes.CLOSED;
 
+import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotorizedArmTicks.ArmModes.RETRACTED;
+import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotorizedArmTicks.ArmModes.EXTENDED;
+
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotorizedArmPower;
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotorizedArmTicks;
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotorizedArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultClaw;
@@ -28,7 +32,7 @@ public class LaPitonTeleOp extends CommandOpMode {
     DriveTrain m_drive;
     MotorizedArmSubsystem m_arm;
     ClawSubsystem m_claw;
-    ServoedWrist m_wrist;
+    //ServoedWrist m_wrist;
     SelectorVirtualSubsystem m_selector;
 
     FtcDashboard dashboard;
@@ -51,7 +55,7 @@ public class LaPitonTeleOp extends CommandOpMode {
         m_drive = new DriveTrain(hardwareMap);
         m_arm = new MotorizedArmSubsystem(hardwareMap);
         m_claw = new ClawSubsystem(hardwareMap);
-        m_wrist = new ServoedWrist(hardwareMap);
+        //m_wrist = new ServoedWrist(hardwareMap);
         m_selector = new SelectorVirtualSubsystem(gamepad1);
 
         dashboard = FtcDashboard.getInstance();
@@ -66,9 +70,15 @@ public class LaPitonTeleOp extends CommandOpMode {
         new GamepadButton(new GamepadEx(gamepad1),
                 GamepadKeys.Button.RIGHT_BUMPER).whenPressed(new DefaultClaw(m_claw, CLOSED));
 
-        m_arm.setDefaultCommand(new MotorizedArmPower(m_arm, gamepad2));
+        new GamepadButton(new GamepadEx(gamepad1),
+                GamepadKeys.Button.DPAD_UP).whenPressed(new MotorizedArmTicks(m_arm, EXTENDED));
 
-        new GamepadButton(new GamepadEx(gamepad2),
+        new GamepadButton(new GamepadEx(gamepad1),
+                GamepadKeys.Button.DPAD_DOWN).whenPressed(new MotorizedArmTicks(m_arm, RETRACTED));
+
+        //m_arm.setDefaultCommand(new MotorizedArmPower(m_arm, gamepad2));
+
+        /*new GamepadButton(new GamepadEx(gamepad2),
                 GamepadKeys.Button.A).whenPressed(
                         new InstantCommand(() ->m_wrist.setWristServoPos(0.25)));
 
@@ -128,7 +138,8 @@ public class LaPitonTeleOp extends CommandOpMode {
             telemetry.update(); */
 
             packet.put("Arm Ticks", m_arm.getArmTicks());
-            packet.put("Servo Angel", m_wrist.getServoPosition());
+            packet.put("Robot Angle", m_drive.getAngle());
+            //zpacket.put("Servo Angel", m_wrist.getServoPosition());
 
             dashboard.sendTelemetryPacket(packet);
         }));

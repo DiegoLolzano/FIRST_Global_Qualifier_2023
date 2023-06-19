@@ -1,12 +1,15 @@
 package org.firstinspires.ftc.teamcode.Subsystems.DriveTrain;
 
+import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.IMU;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.CerbLib.DriveSignal;
 import org.firstinspires.ftc.teamcode.CerbLib.TankDrive;
 import org.firstinspires.ftc.teamcode.CerbLib.Twist2d;
@@ -15,13 +18,21 @@ import org.firstinspires.ftc.teamcode.RoadRunner.drive.DriveConstants;
 public class DriveTrain extends TankDrive {
     private DcMotorEx leftDrive;
     private DcMotorEx rightDrive;
+    private IMU imu;
+    private Orientation lastAngles = new Orientation();
     //private BNO055IMU imu; Checar que onda con esto un dia libre
 
     public DriveTrain(HardwareMap hardwareMap){
         leftDrive = hardwareMap.get(DcMotorEx.class, "leftDrive");
         rightDrive = hardwareMap.get(DcMotorEx.class, "rightDrive");
 
-        //imu = hardwareMap.get(BNO055IMU.class, "imu");
+        IMU.Parameters imuParameters = new IMU.Parameters(
+                new RevHubOrientationOnRobot(RevHubOrientationOnRobot.LogoFacingDirection.LEFT,
+                        RevHubOrientationOnRobot.UsbFacingDirection.BACKWARD));
+
+        imu = hardwareMap.get(IMU.class, "imu");
+
+        imu.initialize(imuParameters);
 
         leftDrive.setDirection(DcMotorSimple.Direction.FORWARD);
         rightDrive.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -104,6 +115,15 @@ public class DriveTrain extends TankDrive {
         leftDrive.setDirection(leftdirection);
         rightDrive.setDirection(rightDirection);
     }
+
+    public void resetImu(){
+        imu.resetYaw();
+    }
+
+    public double getAngle(){
+        return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
+    }
+
 
     /********** Cheesy Drive **********/
     public void setOpenLoop(DriveSignal signal) {
