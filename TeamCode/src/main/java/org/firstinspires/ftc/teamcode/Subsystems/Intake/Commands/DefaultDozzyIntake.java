@@ -3,10 +3,10 @@ package org.firstinspires.ftc.teamcode.Subsystems.Intake.Commands;
 import com.arcrobotics.ftclib.command.CommandBase;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-import org.firstinspires.ftc.teamcode.Subsystems.Intake.IntakeSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.Intake.DozzyIntake;
 
-public class DefaultIntake extends CommandBase {
-    private IntakeSubsystem m_intake;
+public class DefaultDozzyIntake extends CommandBase {
+    private DozzyIntake m_intake;
     private Gamepad gamepad;
     private IntakeMode intakeMode;
 
@@ -16,7 +16,7 @@ public class DefaultIntake extends CommandBase {
         STOP
     }
 
-    public DefaultIntake(IntakeSubsystem m_intake, IntakeMode intakeMode){
+    public DefaultDozzyIntake(DozzyIntake m_intake, IntakeMode intakeMode){
         this.m_intake = m_intake;
         this.intakeMode = intakeMode;
 

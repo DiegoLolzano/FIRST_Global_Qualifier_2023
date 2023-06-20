@@ -4,7 +4,6 @@ import com.arcrobotics.ftclib.command.CommandBase;
 import com.arcrobotics.ftclib.util.Timing.Timer;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem2;
 
 import java.util.concurrent.TimeUnit;

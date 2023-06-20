@@ -4,7 +4,6 @@ import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
-import com.acmerobotics.roadrunner.drive.Drive;
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.InstantCommand;
 import com.arcrobotics.ftclib.command.RunCommand;
@@ -17,21 +16,13 @@ import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.Challeng
 import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ChallengeSpecific.June19.AllArmPos.ArmPoses.LOW;
 import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ChallengeSpecific.June19.AllArmPos.ArmPoses.MID;
 import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ChallengeSpecific.June19.AllArmPos.ArmPoses.TOP;
-import static org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultClaw.ClawModes.CLOSED;
-import static org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultClaw.ClawModes.OPEN;
+import static org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultDoubleClaw.ClawModes.CLOSED;
+import static org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultDoubleClaw.ClawModes.OPEN;
 
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ChallengeSpecific.June19.AllArmPos.ArmPoses.RETRACT;
-import static org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ChallengeSpecific.June19.AllArmPos.ArmPoses.WORLD_SCORE;
-
-import org.firstinspires.ftc.teamcode.RoadRunner.drive.DriveConstants;
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ChallengeSpecific.June14.HubArm;
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ChallengeSpecific.June19.AllArmPos;
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.MotorizedArmTicks;
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotorizedArmSubsystem;
-import org.firstinspires.ftc.teamcode.Subsystems.Arm.ServoedArmSubsystem;
-import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem;
-import org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultClaw;
-import org.firstinspires.ftc.teamcode.Subsystems.Claw.SingleServoClaw;
+import org.firstinspires.ftc.teamcode.Subsystems.Claw.DoubleServoClaw;
+import org.firstinspires.ftc.teamcode.Subsystems.Claw.Commands.DefaultDoubleClaw;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.DriveCommand;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.DriveTrain;
 import org.firstinspires.ftc.teamcode.Subsystems.SelectorVirtualSubsystem;
@@ -41,7 +32,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.SelectorVirtualSubsystem;
 public class June19Tele extends CommandOpMode {
     DriveTrain m_drive;
     MotorizedArmSubsystem m_motorizedArm;
-    ClawSubsystem m_doubleClaw;
+    DoubleServoClaw m_doubleClaw;
     SelectorVirtualSubsystem m_selector;
 
     FtcDashboard dashboard;
@@ -66,7 +57,7 @@ public class June19Tele extends CommandOpMode {
     public void initialize() {
         m_drive = new DriveTrain(hardwareMap);
         m_motorizedArm = new MotorizedArmSubsystem(hardwareMap);
-        m_doubleClaw = new ClawSubsystem(hardwareMap);
+        m_doubleClaw = new DoubleServoClaw(hardwareMap);
         m_selector = new SelectorVirtualSubsystem(gamepad2);
 
         dashboard = FtcDashboard.getInstance();
@@ -103,11 +94,11 @@ public class June19Tele extends CommandOpMode {
 
         new GamepadButton(new GamepadEx(gamepad1),
                 GamepadKeys.Button.RIGHT_BUMPER).whenPressed(
-                        new DefaultClaw(m_doubleClaw, OPEN));
+                        new DefaultDoubleClaw(m_doubleClaw, OPEN));
 
         new GamepadButton(new GamepadEx(gamepad1),
                 GamepadKeys.Button.LEFT_BUMPER).whenPressed(
-                new DefaultClaw(m_doubleClaw, CLOSED));
+                new DefaultDoubleClaw(m_doubleClaw, CLOSED));
 
 
         //TELEMETRY

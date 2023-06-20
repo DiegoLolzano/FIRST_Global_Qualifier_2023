@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.teamcode.CerbLib.IMUPathAlgorithm;
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotorizedArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.ServoedArmSubsystem;
-import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.Claw.DoubleServoClaw;
 import org.firstinspires.ftc.teamcode.Subsystems.Claw.SingleServoClaw;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.IMUPathAlgorithmCommand;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.DriveTrain;
@@ -23,7 +23,7 @@ public class BLUEWobbleAndPark extends CommandOpMode {
     DriveTrain m_drive;
     MotorizedArmSubsystem m_motorizedArm;
     ServoedArmSubsystem m_servoedArm;
-    ClawSubsystem m_doubleClaw;
+    DoubleServoClaw m_doubleClaw;
     SingleServoClaw m_singleClaw;
     IMUPathAlgorithm pathAlgorithm;
 
@@ -35,7 +35,7 @@ public class BLUEWobbleAndPark extends CommandOpMode {
         m_drive = new DriveTrain(hardwareMap);
         m_motorizedArm = new MotorizedArmSubsystem(hardwareMap);
         m_servoedArm = new ServoedArmSubsystem(hardwareMap);
-        m_doubleClaw = new ClawSubsystem(hardwareMap);
+        m_doubleClaw = new DoubleServoClaw(hardwareMap);
         m_singleClaw = new SingleServoClaw(hardwareMap);
 
         pathAlgorithm = new IMUPathAlgorithm(m_drive);

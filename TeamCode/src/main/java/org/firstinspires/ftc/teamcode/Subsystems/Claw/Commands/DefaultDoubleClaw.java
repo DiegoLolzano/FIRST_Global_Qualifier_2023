@@ -4,12 +4,12 @@ import com.arcrobotics.ftclib.command.CommandBase;
 import com.arcrobotics.ftclib.util.Timing.Timer;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-import org.firstinspires.ftc.teamcode.Subsystems.Claw.ClawSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.Claw.DoubleServoClaw;
 
 import java.util.concurrent.TimeUnit;
 
-public class DefaultClaw extends CommandBase {
-    ClawSubsystem clawSubsystem;
+public class DefaultDoubleClaw extends CommandBase {
+    DoubleServoClaw clawSubsystem;
     private ClawModes modes;
     private Gamepad gamepad;
     protected Timer timer;
@@ -20,7 +20,7 @@ public class DefaultClaw extends CommandBase {
 
     }
 
-    public DefaultClaw(ClawSubsystem clawSubsystem, ClawModes modes){
+    public DefaultDoubleClaw(DoubleServoClaw clawSubsystem, ClawModes modes){
         this.clawSubsystem = clawSubsystem;
         this.modes = modes;
 
