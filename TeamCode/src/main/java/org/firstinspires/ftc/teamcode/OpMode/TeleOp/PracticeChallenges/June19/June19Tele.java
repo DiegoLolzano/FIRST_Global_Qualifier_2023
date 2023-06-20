@@ -37,7 +37,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.DriveTrain;
 import org.firstinspires.ftc.teamcode.Subsystems.SelectorVirtualSubsystem;
 
 @TeleOp
-@Config
+@Config //TODO: Needed for live tuning with the Dashboard
 public class June19Tele extends CommandOpMode {
     DriveTrain m_drive;
     MotorizedArmSubsystem m_motorizedArm;
@@ -47,7 +47,7 @@ public class June19Tele extends CommandOpMode {
     FtcDashboard dashboard;
     TelemetryPacket packet;
 
-    public static int ArmTicksPos = 0;
+    public static int ArmTicksPos = 0; //TODO: public and static important for live tuning
     public static double singleClawPos = 0.0;
     public static double doubleClawPos = 0.0;
     public static double servoArmPos = 0.0;
