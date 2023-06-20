@@ -3,22 +3,21 @@ package org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ChallengeSpeci
 import com.arcrobotics.ftclib.command.CommandBase;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotorizedArmSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.SelectorVirtualSubsystem;
 
 public class HubArm extends CommandBase {
     private MotorizedArmSubsystem m_arm;
-    private HubLevel level;
+
+    SelectorVirtualSubsystem m_selector;
+
     private int levelTicks = 0;
 
-    public enum HubLevel {
-        LOWER,
-        MIDDLE,
-        UPPER,
-        RETRACTED
-    }
-
-    public HubArm(MotorizedArmSubsystem m_arm, HubLevel level){
+    public HubArm(MotorizedArmSubsystem m_arm, SelectorVirtualSubsystem m_selector){
         this.m_arm = m_arm;
-        this.level = level;
+        this.m_selector = m_selector;
+        //this.level = level;
+
+        addRequirements(m_arm);
     }
 
     @Override
@@ -26,26 +25,20 @@ public class HubArm extends CommandBase {
 
     @Override
     public void execute(){
-        switch (level){
-            case RETRACTED:
-                levelTicks = -200; //Check Values
-                m_arm.setArmTicks(levelTicks);
-                m_arm.setPower(0.5);
-            break;
-
-            case LOWER:
+        switch (m_selector.getLevelToScore()){
+            case "LOWER":
                 levelTicks = 200; //
                 m_arm.setArmTicks(levelTicks);
                 m_arm.setPower(0.5);
             break;
 
-            case MIDDLE:
+            case "MIDDLE":
                 levelTicks = -1593; //Check Values //
                 m_arm.setArmTicks(levelTicks);
                 m_arm.setPower(0.5);
             break;
 
-            case UPPER:
+            case "TOP":
                 levelTicks = -2752; //Check Values //
                 m_arm.setArmTicks(levelTicks);
                 m_arm.setPower(0.5);

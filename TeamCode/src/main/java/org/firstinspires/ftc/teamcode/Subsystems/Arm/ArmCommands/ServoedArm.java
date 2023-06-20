@@ -27,11 +27,11 @@ public class ServoedArm extends CommandBase {
     public void execute(){
         switch (state){
             case UP:
-                servoedArm.setServoArmPos(0.9);
+                servoedArm.setServoArmPos(0.33);
             break;
 
             case DOWN:
-                servoedArm.setServoArmPos(0.45);
+                servoedArm.setServoArmPos(0.67);
             break;
         }
     }

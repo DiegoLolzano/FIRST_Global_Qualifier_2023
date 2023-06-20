@@ -13,11 +13,9 @@ public class SelectorVirtualSubsystem extends SubsystemBase {
     public SelectorVirtualSubsystem(Gamepad gamepad){
         this.gamepad = gamepad;
 
-        coneLevel.add("Top");
-        coneLevel.add("Level 4");
-        coneLevel.add("Level 3");
-        coneLevel.add("Level 2");
-        coneLevel.add("Bottom");
+        coneLevel.add("TOP");
+        coneLevel.add("MIDDLE");
+        coneLevel.add("LOWER");
     }
 
     public void updateSelectionUp(){
@@ -35,7 +33,7 @@ public class SelectorVirtualSubsystem extends SubsystemBase {
         }
     }
 
-    public String getLevelToPickUp(){
+    public String getLevelToScore(){
         return coneLevel.get(selectedLevel);
     }
 }

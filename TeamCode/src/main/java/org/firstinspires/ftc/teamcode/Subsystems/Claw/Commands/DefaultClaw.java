@@ -38,13 +38,13 @@ public class DefaultClaw extends CommandBase {
     public void execute(){
         switch (modes){
             case OPEN:
-                clawSubsystem.setLeftClawPos(0.35);
-                clawSubsystem.setRightClawPos(0.35);
+                clawSubsystem.setLeftClawPos(0.5);
+                clawSubsystem.setRightClawPos(0.5);
             break;
 
             case CLOSED:
-                clawSubsystem.setLeftClawPos(0.1);
-                clawSubsystem.setRightClawPos(0.1);
+                clawSubsystem.setLeftClawPos(0.9);
+                clawSubsystem.setRightClawPos(0.9);
             break;
         }
     }

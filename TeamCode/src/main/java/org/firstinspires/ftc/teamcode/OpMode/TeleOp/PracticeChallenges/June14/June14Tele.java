@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.OpMode.TeleOp.PracticeChallenges.June14;
+/*package org.firstinspires.ftc.teamcode.OpMode.TeleOp.PracticeChallenges.June14;
 
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.RunCommand;
@@ -38,7 +38,7 @@ public class June14Tele extends CommandOpMode {
      * armMotor Motor Port:   2
      *
      * intakeMotor Motor Port: 3;
-     */
+
 
     @Override
     public void initialize() {
@@ -72,4 +72,4 @@ public class June14Tele extends CommandOpMode {
             telemetry.update();
         }));
     }
-}
+}*/

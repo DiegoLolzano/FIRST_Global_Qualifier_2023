@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Subsystems.DriveTrain;
 
+import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
@@ -9,6 +10,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.CerbLib.DriveSignal;
 import org.firstinspires.ftc.teamcode.CerbLib.TankDrive;
@@ -18,19 +21,19 @@ import org.firstinspires.ftc.teamcode.RoadRunner.drive.DriveConstants;
 public class DriveTrain extends TankDrive {
     private DcMotorEx leftDrive;
     private DcMotorEx rightDrive;
-    private IMU imu;
-    private Orientation lastAngles = new Orientation();
-    //private BNO055IMU imu; Checar que onda con esto un dia libre
+    private BNO055IMU imu;
+
+    private double headingOffset = 0;
+    private double robotHeading = 0;
 
     public DriveTrain(HardwareMap hardwareMap){
         leftDrive = hardwareMap.get(DcMotorEx.class, "leftDrive");
         rightDrive = hardwareMap.get(DcMotorEx.class, "rightDrive");
 
-        IMU.Parameters imuParameters = new IMU.Parameters(
-                new RevHubOrientationOnRobot(RevHubOrientationOnRobot.LogoFacingDirection.LEFT,
-                        RevHubOrientationOnRobot.UsbFacingDirection.BACKWARD));
+        BNO055IMU.Parameters imuParameters = new BNO055IMU.Parameters();
+        imuParameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
 
-        imu = hardwareMap.get(IMU.class, "imu");
+        imu = hardwareMap.get(BNO055IMU.class, "imu");
 
         imu.initialize(imuParameters);
 
@@ -84,6 +87,7 @@ public class DriveTrain extends TankDrive {
         rightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
+    //Get Encoder values in double form
     @Override
     public double getLeftCurrentPos(){
         return leftDrive.getCurrentPosition();
@@ -91,6 +95,17 @@ public class DriveTrain extends TankDrive {
 
     @Override
     public double getRightCurrentPos(){
+        return rightDrive.getCurrentPosition();
+    }
+
+    //Get Encoder values in int form
+    @Override
+    public int getLeftPos(){
+        return leftDrive.getCurrentPosition();
+    }
+
+    @Override
+    public int getRightPos(){
         return rightDrive.getCurrentPosition();
     }
 
@@ -110,20 +125,49 @@ public class DriveTrain extends TankDrive {
         return rightDrive.isBusy();
     }
 
-    public void invertMotors(DcMotorSimple.Direction leftdirection,
+    public void invertMotors(DcMotorSimple.Direction leftDirection,
                              DcMotorSimple.Direction rightDirection){
-        leftDrive.setDirection(leftdirection);
+        leftDrive.setDirection(leftDirection);
         rightDrive.setDirection(rightDirection);
     }
 
-    public void resetImu(){
-        imu.resetYaw();
+    @Override
+    public void setLeftMode(){
+        leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
+    @Override
+    public void setRightMode(){
+        rightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+    }
+
+    //public void resetImu(){
+        //imu.
+    //}
+
+    @Override
+    public void moveRobot(double drive, double turn) {
+
+        double leftSpeed = drive - turn;
+        double rightSpeed = drive + turn;
+
+        // Scale speeds down if either one exceeds +/- 1.0;
+        double max = Math.max(Math.abs(leftSpeed), Math.abs(rightSpeed));
+        if (max > 1.0)
+        {
+            leftSpeed /= max;
+            rightSpeed /= max;
+        }
+
+        leftDrive.setPower(leftSpeed);
+        rightDrive.setPower(rightSpeed);
+    }
+
+    @Override
     public double getAngle(){
-        return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
+        Orientation angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+        return angles.firstAngle;
     }
-
 
     /********** Cheesy Drive **********/
     public void setOpenLoop(DriveSignal signal) {

@@ -21,14 +21,24 @@ public class DriveConstants {
     /*
      * These are motor constants that should be listed online for your motors.
      */
+
+    /*
+    * 20:1 TICKS PER REV = 537.6
+    * 20:1 MAX_RPM = 312.5
+    * FORMULA FOR ULTRA-PLANETARY GEARBOX TICKS AND RPM
+    * TICKS_PER_REV = (DESIRED GEAR RATIO / 20:1) * TPR 20:1
+    *
+    * MAX_RPM = (MAX_RPM 20:1 * GEAR RATIO 20:1) / DESIRED GEAR RATIO
+    *
+    */
     //Core Hex = 288
     //HD Hex 20:1 = 560
     //HD Hex free or with planetary= 28
-    public static final double TICKS_PER_REV = 430;
+    public static final double TICKS_PER_REV = 403.2;
     //Core Hex = 125
     //HD Hex 20:1 = 300
     //HD Hex free or with planetary = 6000
-    public static final double MAX_RPM = 390.625;
+    public static final double MAX_RPM = 416.66;
 
     /*
      * Set RUN_USING_ENCODER to true to enable built-in hub velocity control using drive encoders.
@@ -41,6 +51,10 @@ public class DriveConstants {
     public static final boolean RUN_USING_ENCODER = false;
     public static PIDFCoefficients MOTOR_VELO_PID = new PIDFCoefficients(0, 0, 0,
             getMotorVelocityF(MAX_RPM / 60 * TICKS_PER_REV));
+
+    public static double P_DRIVE_GAIN = 0.03;
+    public static double P_TURN_GAIN = 0.0055;
+    public static double HEADING_THRESHOLD = 1.0;
 
     /*
      * These are physical constants that can be determined from your robot (including the track

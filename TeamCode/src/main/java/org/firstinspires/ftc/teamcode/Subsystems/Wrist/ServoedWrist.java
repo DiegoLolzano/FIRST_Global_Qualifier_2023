@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.teamcode.Subsystems.Wrist;
 
+import com.acmerobotics.dashboard.config.Config;
 import com.arcrobotics.ftclib.command.SubsystemBase;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
+@Config
 public class ServoedWrist extends SubsystemBase {
     private Servo wristServo;
 
