@@ -6,6 +6,7 @@ import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.RunCommand;
 
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.ArmCommands.ChallengeSpecific.June19.AllArmPos;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.DriveTrain;
 
 public class DashboardTele extends CommandOpMode {
@@ -27,7 +28,6 @@ public class DashboardTele extends CommandOpMode {
             //telemetry.addData("rightTicks", m_drive.getRightCurrentPos());
             packet.put("leftTicks", m_drive.getLeftCurrentPos());
             packet.put("rightTicks", m_drive.getRightCurrentPos());
-
             dashboard.sendTelemetryPacket(packet);
         }));
 

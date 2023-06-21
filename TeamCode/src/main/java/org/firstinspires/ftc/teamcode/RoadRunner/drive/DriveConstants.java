@@ -71,6 +71,7 @@ public class DriveConstants {
     public static double WHEEL_RADIUS = 3.54331; // in
     public static double GEAR_RATIO = 1;//16; // output (wheel) speed / input (motor) speed
     public static double TRACK_WIDTH = 12.5; // in
+    //Smaller the number, smaller the turn radius and vice-versa
     public static double TRACK_SCRUB_FACTOR = 0.5;
     //-----------calculos-----------//
     public static double TICKS_PER_INCH = ( TICKS_PER_REV * GEAR_RATIO ) / (2 * Math.PI * WHEEL_RADIUS );

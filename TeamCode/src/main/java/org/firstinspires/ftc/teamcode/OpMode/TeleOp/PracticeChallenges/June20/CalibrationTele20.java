@@ -21,6 +21,7 @@ import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.teamcode.Subsystems.Arm.MotorizedArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Basket.BasketSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Indexer.IndexerSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake.DozzyIntake;
@@ -32,6 +33,7 @@ public class CalibrationTele20 extends CommandOpMode {
     IndexerSubsystem m_indexer;
     BasketSubsystem m_basket;
     DozzyIntake m_intake;
+    MotorizedArmSubsystem m_arm;
 
     FtcDashboard dashboard;
     TelemetryPacket packet;
@@ -56,6 +58,7 @@ public class CalibrationTele20 extends CommandOpMode {
         m_basket = new BasketSubsystem(hardwareMap);
         m_indexer = new IndexerSubsystem(hardwareMap);
         m_intake = new DozzyIntake(hardwareMap);
+        m_arm = new MotorizedArmSubsystem(hardwareMap);
 
         dashboard = FtcDashboard.getInstance();
         packet = new TelemetryPacket();
@@ -78,6 +81,9 @@ public class CalibrationTele20 extends CommandOpMode {
 
         schedule(new RunCommand(() -> {
             //In case of running any telemetry (Driver HUB Dashboard)
+            packet.put("Ticks del brazo", m_arm.getArmTicks());
+
+            dashboard.sendTelemetryPacket(packet);
         }));
     }
 }
