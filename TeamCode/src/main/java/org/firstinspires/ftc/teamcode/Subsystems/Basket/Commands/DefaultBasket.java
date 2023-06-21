@@ -40,11 +40,11 @@ public class DefaultBasket extends CommandBase {
     public void execute(){
         switch (modes){
             case INDEX:
-                basketSubsystem.setBasketPos(0);
+                basketSubsystem.setBasketPos(0.5);
             break;
 
             case TRANSIT:
-                basketSubsystem.setBasketPos(0.5);
+                basketSubsystem.setBasketPos(0.75);
             break;
 
             case SCORE:

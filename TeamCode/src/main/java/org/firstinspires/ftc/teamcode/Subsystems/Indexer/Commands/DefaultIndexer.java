@@ -1,22 +1,23 @@
-package org.firstinspires.ftc.teamcode.Subsystems.Intake.Commands;
+package org.firstinspires.ftc.teamcode.Subsystems.Indexer.Commands;
 
 import com.arcrobotics.ftclib.command.CommandBase;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
+import org.firstinspires.ftc.teamcode.Subsystems.Indexer.IndexerSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake.DozzyIntake;
 
-public class DefaultDozzyIntake extends CommandBase {
-    private DozzyIntake m_intake;
+public class DefaultIndexer extends CommandBase {
+    private IndexerSubsystem m_intake;
     private Gamepad gamepad;
     private IntakeMode intakeMode;
 
     public enum IntakeMode{
-        IN,
-        OUT,
-        STOP
+        IN_INDEXER,
+        OUT_INDEXER,
+        STOP_INDEXER
     }
 
-    public DefaultDozzyIntake(DozzyIntake m_intake, IntakeMode intakeMode){
+    public DefaultIndexer(IndexerSubsystem m_intake, IntakeMode intakeMode){
         this.m_intake = m_intake;
         this.intakeMode = intakeMode;
 
@@ -29,16 +30,16 @@ public class DefaultDozzyIntake extends CommandBase {
     @Override
     public void execute(){
         switch (intakeMode){
-            case STOP:
-                m_intake.setIntakePower(0.0);
+            case STOP_INDEXER:
+                m_intake.setIndexerPower(0.0);
             break;
 
-            case IN:
-                m_intake.setIntakePower(1.0);
+            case IN_INDEXER:
+                m_intake.setIndexerPower(-1.0);
             break;
 
-            case OUT:
-                m_intake.setIntakePower(-1.0);
+            case OUT_INDEXER:
+                m_intake.setIndexerPower(1.0);
             break;
         }
     }
@@ -48,6 +49,6 @@ public class DefaultDozzyIntake extends CommandBase {
 
     @Override
     public boolean isFinished(){
-        return m_intake.isIntakeBusy() & gamepad == null;
+        return m_intake.isIndexerBusy() & gamepad == null;
     }
 }

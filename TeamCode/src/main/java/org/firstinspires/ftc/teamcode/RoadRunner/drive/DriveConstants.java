@@ -34,10 +34,14 @@ public class DriveConstants {
     //Core Hex = 288
     //HD Hex 20:1 = 560
     //HD Hex free or with planetary= 28
+    //Ultraplanetary 15:1 = 403.2
+    //Ultraplanetary 16:1 = 430
     public static final double TICKS_PER_REV = 403.2;
     //Core Hex = 125
     //HD Hex 20:1 = 300
     //HD Hex free or with planetary = 6000
+    //Ultraplanetary 15:1 = 416.66
+    //Ultraplanetary 16:1 = 390.625
     public static final double MAX_RPM = 416.66;
 
     /*
@@ -53,7 +57,7 @@ public class DriveConstants {
             getMotorVelocityF(MAX_RPM / 60 * TICKS_PER_REV));
 
     public static double P_DRIVE_GAIN = 0.03;
-    public static double P_TURN_GAIN = 0.0055;
+    public static double P_TURN_GAIN = 0.005325;
     public static double HEADING_THRESHOLD = 1.0;
 
     /*
@@ -66,8 +70,8 @@ public class DriveConstants {
      */
     public static double WHEEL_RADIUS = 3.54331; // in
     public static double GEAR_RATIO = 1;//16; // output (wheel) speed / input (motor) speed
-    public static double TRACK_WIDTH = 13.9375; // in
-    public static double TRACK_SCRUB_FACTOR = 1.0;
+    public static double TRACK_WIDTH = 12.5; // in
+    public static double TRACK_SCRUB_FACTOR = 0.5;
     //-----------calculos-----------//
     public static double TICKS_PER_INCH = ( TICKS_PER_REV * GEAR_RATIO ) / (2 * Math.PI * WHEEL_RADIUS );
     public static double INCH_PER_TICK = (2 * Math.PI * WHEEL_RADIUS ) / ( TICKS_PER_REV * GEAR_RATIO ) ;
@@ -104,9 +108,9 @@ public class DriveConstants {
      * Adjust the orientations here to match your robot. See the FTC SDK documentation for details.
      */
     public static RevHubOrientationOnRobot.LogoFacingDirection LOGO_FACING_DIR =
-            RevHubOrientationOnRobot.LogoFacingDirection.LEFT;
+            RevHubOrientationOnRobot.LogoFacingDirection.UP;
     public static RevHubOrientationOnRobot.UsbFacingDirection USB_FACING_DIR =
-            RevHubOrientationOnRobot.UsbFacingDirection.BACKWARD;
+            RevHubOrientationOnRobot.UsbFacingDirection.RIGHT;
 
 
     public static double encoderTicksToInches(double ticks) {

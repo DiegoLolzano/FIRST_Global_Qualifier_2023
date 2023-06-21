@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.OpMode.Autos.DebugAutos;
 
 import com.acmerobotics.dashboard.FtcDashboard;
+import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.arcrobotics.ftclib.command.CommandOpMode;
@@ -16,6 +17,7 @@ import org.firstinspires.ftc.teamcode.RoadRunner.drive.DriveConstants;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.Commands.IMUPathAlgorithmCommand;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain.DriveTrain;
 
+@Config
 @Autonomous (name="Tuneo de PID Giro", group="PID Tuning")
 public class TurnPIDTuning extends CommandOpMode {
     DriveTrain m_drive;
