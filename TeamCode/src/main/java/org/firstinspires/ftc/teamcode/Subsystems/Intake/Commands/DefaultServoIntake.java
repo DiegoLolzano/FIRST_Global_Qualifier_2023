@@ -2,10 +2,10 @@ package org.firstinspires.ftc.teamcode.Subsystems.Intake.Commands;
 
 import com.arcrobotics.ftclib.command.CommandBase;
 
-import org.firstinspires.ftc.teamcode.Subsystems.Intake.ServoedIntake;
+import org.firstinspires.ftc.teamcode.Subsystems.Intake.ContinuousServoIntake;
 
 public class DefaultServoIntake extends CommandBase {
-    private ServoedIntake m_intake;
+    private ContinuousServoIntake m_intake;
     private IntakeMode mode;
 
     public enum IntakeMode{
@@ -14,7 +14,7 @@ public class DefaultServoIntake extends CommandBase {
         STOP_SERVO
     }
 
-    public DefaultServoIntake(ServoedIntake m_intake, IntakeMode mode){
+    public DefaultServoIntake(ContinuousServoIntake m_intake, IntakeMode mode){
         this.m_intake = m_intake;
         this.mode = mode;
 
