@@ -86,8 +86,6 @@ public class ControlHUBTester extends SubsystemBase {
 
         motorTest4.setPositionPIDFCoefficients(0.5);
         motorTest4.setTargetPositionTolerance(20);
-
-
     }
 
     //Motor methods
