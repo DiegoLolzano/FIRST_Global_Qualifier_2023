@@ -82,5 +82,10 @@ public class June20Tele extends CommandOpMode {
             telemetry.addData("Left speed", m_drive.getLeftVelocity());
             telemetry.addData("Right speed", m_drive.getRightVelocity());
         }));
+
+        /*
+        * Diego Lozano was here.
+        * We'll get 'em next time <3
+        */
     }
 }
